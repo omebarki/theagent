@@ -35,9 +35,6 @@
  * @since	Version 1.0.0
  * @filesource
  */
- 
- //include autoload pour Twig
- include_once './vendor/autoload.php';
 
 /*
  *---------------------------------------------------------------

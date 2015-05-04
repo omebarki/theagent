@@ -1,0 +1,20 @@
+/*  homepage CSS file for The Agent */
+
+.homeContainer > .row > .col-md-6 {
+	margin-bottom:40px;
+}
+.brandInfo {
+	border:1px solid #9A9999;
+	padding:10px 0;
+}
+.brandInfo div span {
+	font-weight:bold;
+}
+.brandInfo div {
+	margin-bottom:5px;
+}
+@media (max-width: 767px) {
+	.brandInfo div.tar {
+		text-align:left;
+	}
+}
