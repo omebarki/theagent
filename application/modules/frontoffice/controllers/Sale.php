@@ -18,7 +18,6 @@ class Sale extends MX_Controller {
 		$data['title'] = "Sale";
 		$data['page_style'] = "homepage";
 		$data['content'] = $this->load->view('sale_tpl', '', true);
-		
 
 		//charge the view "contact" in the other view template
 		$this->load->view('layout_tpl', $data);

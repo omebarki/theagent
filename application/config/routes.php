@@ -53,3 +53,5 @@ $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['module_name'] = 'controller_name';
+$route['^(en|de|fr|nl)/(.+)$'] = "$2";
+$route['^(en|de|fr|nl)$'] = $route['default_controller']; 
