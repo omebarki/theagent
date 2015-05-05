@@ -9,6 +9,7 @@ html {
 body {
 	font-family:'Century gothic';
 	color:#000;
+	padding-top:70px;
 }
 
 a {
@@ -117,6 +118,9 @@ fieldset[disabled] .btn-primary.active {
 	padding:0;
 	height:58px;
 }
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+	margin-left:0;
+}
 .navbar-inverse .navbar-nav > li > a {
 	color:#FFF;
 }
@@ -144,14 +148,30 @@ fieldset[disabled] .btn-primary.active {
 	color:#FFF;
 	font-weight:bold;
 }
+.fullwidth-bar .container > .navbar-header, .fullwidth-bar .container-fluid > .navbar-header, .fullwidth-bar .container > .navbar-collapse, .fullwidth-bar .container-fluid > .navbar-collapse {
+	margin-left:0;
+	margin-right:0;
+}
+.fullwidth-bar .navbar-header {
+	background:#000;
+}
+.navbar-inverse {
+	background-color: transparent;
+	border-color: transparent;
+}
+.navbar-fixed-top {
+	border:0;
+}
+.navbar-default .navbar-brand.menuText {
+	height:50px;
+	padding:15px;
+	line-height:20px;
+	font-weight:bold;
+}
 @media (min-width: 768px) {
 	.navbar-collapse {
 		padding-left:0;
 		padding-right:0;
-	}
-	.navbar-inverse {
-		background-color: transparent;
-		border-color: transparent;
 	}
 	.navbar-default {
 		border-top:0px;
@@ -159,6 +179,9 @@ fieldset[disabled] .btn-primary.active {
 	.navbar-form {
 		margin:0;
 		margin-right:-15px;
+	}
+	.navbar-default .navbar-brand {
+		display:none;
 	}
 }
 
@@ -176,4 +199,14 @@ fieldset[disabled] .btn-primary.active {
 /* Progress bar */
 .progress-bar {
 	background-color:#333;
+}
+
+/*----------------------------------------------------------
+-------------- BOOTSTRAP SELECTS RESETS --------------------
+----------------------------------------------------------*/
+.bootstrap-select.btn-group .btn .caret {
+	right:9px;
+}
+.bootstrap-select.btn-group .btn .filter-option {
+	border-right:1px solid #848383;
 }

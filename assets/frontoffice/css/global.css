@@ -80,6 +80,7 @@
 	background:url('../img/bg_toprow.jpg') left top repeat-x;
 }
 #navbarTop {
+	background:#000;
 }
 .siteLogo {
 	padding:10px 0 30px 0;
@@ -103,6 +104,7 @@
 		border-left:2px solid #FFF;
 		top:12px;
 	}
+	#navbarTop {background:none;}
 }
 
 
