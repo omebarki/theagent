@@ -9,10 +9,7 @@ class Login extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-		$this->load->helper('url');
-		$this->lang->load("common","french");
-
-		//if $_REQUEST; echo 'hello';
+		//$this->lang->load("common","french");
 
     }
 

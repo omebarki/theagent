@@ -31,7 +31,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a href="#" class="navbar-brand"><img src="<?php echo base_url() ?>assets/frontoffice/img/the-agent-logo-small.jpg" width="91" height="58" /></a>
+			<a href="/" class="navbar-brand"><img src="<?php echo base_url() ?>assets/frontoffice/img/the-agent-logo-small.jpg" width="91" height="58" /></a>
 		</div>
 		<div class="navbar-collapse collapse" id="navbarTop">
 			<ul class="nav navbar-nav navbar-right">
@@ -57,13 +57,13 @@
 		</div>
 		<div class="navbar-collapse collapse" id="navbarMain">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Categories</a></li>
-				<li><a href="#">SKU</a></li>
-				<li><a href="#">Stock</a></li>
-				<li><a href="#">Price</a></li>
-				<li><a href="#">Brands</a></li>
-				<li><a href="#">Size</a></li>
+				<li class="active"><a href="#"><?php echo lang("home"); ?></a></li>
+				<li><a href="#"><?php echo lang("category"); ?></a></li>
+				<li><a href="#"><?php echo lang("sku"); ?></a></li>
+				<li><a href="#"><?php echo lang("stock"); ?></a></li>
+				<li><a href="#"><?php echo lang("price"); ?></a></li>
+				<li><a href="#"><?php echo lang("brands"); ?></a></li>
+				<li><a href="#"><?php echo lang("size"); ?></a></li>
 			</ul>
 			<form class="navbar-form navbar-right">
 				<div class="form-group">

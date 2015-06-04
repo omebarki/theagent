@@ -9,21 +9,16 @@ class Sale extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-		$this->load->helper("url");
-		$this->lang->load("common","english");
+		$this->lang->load("frontoffice",$this->session->userdata('site_lang'));
     }
 
     public function index() {
-		//Charge the view inside array
+
 		$data['title'] = "Sale";
 		$data['page_style'] = "homepage";
 		$data['content'] = $this->load->view('sale_tpl', '', true);
 
-		//charge the view "contact" in the other view template
 		$this->load->view('layout_tpl', $data);
-    }    
+    }
 
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
