@@ -10,10 +10,19 @@ class Sale extends MX_Controller {
     public function __construct() {
         parent::__construct();
 		$this->lang->load("frontoffice",$this->session->userdata('site_lang'));
+		
+				
+
     }
 
     public function index() {
 
+		$this->load->model('frontoffice/sale_model','sale');
+		$list_sale = $this->sale->get_list_sales();
+		//var_dump($list_sale);
+		
+		$collection = $this->sale->get_collection();
+		
 		$data['title'] = "Sale";
 		$data['page_style'] = "homepage";
 		$data['content'] = $this->load->view('sale_tpl', '', true);
