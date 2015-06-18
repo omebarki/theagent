@@ -2,7 +2,7 @@
 <div class="container mainContainer homeContainer" role="main">
 	<div class="row">
 		<div class="col-md-6">
-			<div class="brandBanner"><a href="<?php echo base_url() ?>frontoffice/category"><img src="<?php echo base_url() ?>assets/frontoffice/img/temp/homebanner-1.gif" width="571" height="437" class="img-responsive"></a></div>
+			<div class="brandBanner"><a href="/frontoffice/category"><img src="<?php echo base_url() ?>assets/frontoffice/img/temp/homebanner-1.gif" width="571" height="437" class="img-responsive"></a></div>
 			<div class="brandInfo clearfix">
 				<div class="col-md-6">Brand: <span>ABACO Paris</span></div>
 				<div class="col-md-6 tar">Available until: <span>05/12/15</span></div>
