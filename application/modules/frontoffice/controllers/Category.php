@@ -16,7 +16,13 @@ class Category extends MX_Controller {
 		
 		$data['title'] = "Catalog";
 		$data['page_style'] = "catalog";
-		$data['content'] = $this->load->view('category_tpl', '', true);
+		$data['content'] = $this->load->view(
+			'category_tpl',
+			array(
+
+			),
+			TRUE
+		);
 		
 		$this->load->view('layout_tpl', $data);
     }

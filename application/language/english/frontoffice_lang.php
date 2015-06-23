@@ -4,6 +4,7 @@ $lang["category"] = "Categories";
 $lang["sku"] = "SKU";
 $lang["stock"] = "Stock";
 $lang["price"] = "Price";
+$lang["sale"] = "Sale";
 $lang["brand"] = "Brands";
 $lang["size"] = "Size";
 $lang["available_until"] = "Available until";
