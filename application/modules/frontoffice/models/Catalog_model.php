@@ -40,10 +40,13 @@ class Catalog_model extends CI_Model {
 	 */
 	public function get_catalog_details($idCatalog) {
 		$query = $this->db
-		->select('DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku, COUNT(DISTINCT pf.id) as nbPF, MIN(p.price) as minPrice, MAX(p.price) as maxPrice, bd.description')
+		->select('DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, c18.name AS saleName, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku, COUNT(DISTINCT pf.id) as nbPF, MIN(p.price) as minPrice, MAX(p.price) as maxPrice, bd.description AS brandDescription, ct.*')
 		->from('catalog c')
+		->join('catalog_i18n c18','c18.idCatalog = c.id')
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
 		->join('brand_has_catalog bhc','bhc.idCatalog = c.id')
+		->join('catalog_has_contact chc','chc.idCatalog = c.id')
+		->join('contact ct','ct.id = chc.idContact')
 		->join('product_family pf','pf.id = pfhc.idProductFamily')
 		->join('brand b','b.id = bhc.idBrand')
 		->join('brand_description bd','bd.id = b.idDescription')
@@ -65,7 +68,7 @@ class Catalog_model extends CI_Model {
 	 */
 	public function get_catalog_products($idCatalog, $lang) {
 		$query = $this->db
-		->select('pf.name, pf.price, pf.retailPrice, pf.sizeRange, c18.name, t18.name, p18.description, p18.name SUM(s.quantity) as totalStock')
+		->select('pf.name, pf.price, pf.retailPrice, pf.sizeRange, c18.name, t18.name, p18.description, p18.name, SUM(s.quantity) as totalStock')
 		->from('catalog c')
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
 		->join('product_family pf','pf.id = pfhc.idProductFamily')

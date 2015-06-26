@@ -37,7 +37,7 @@ class Catalog extends MX_Controller {
 			'show_catalog_tpl', 
 			array(
 				'catalog_details'  => $this->catalog->get_catalog_details($idCatalog),
-				'catalog_products' => $this->catalog->get_catalog_products($idCatalog, $this->session->userdata('site_lang')),
+				'catalog_products' => $this->catalog->get_catalog_products($idCatalog, $this->session->userdata('locale')),
 			),
 			TRUE
 		);

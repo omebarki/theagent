@@ -52,10 +52,26 @@ class MX_Controller
 		
 		/* autoload module items */
 		$this->load->_autoloader($this->autoload);
+		$this->setSessionData();
 	}
 	
 	public function __get($class) 
 	{
 		return CI::$APP->$class;
+	}
+
+	private function setSessionData(){
+		$language = $this->session->userdata('site_lang');
+		$locale   = '';
+		if(isset($_POST['language'])){
+
+		}
+		if($language == 'english'){
+			$locale = 'en_UK';
+		}
+		elseif($language == 'french'){
+			$locale = 'fr_FR';
+		}
+		$this->session->set_userdata('locale', $locale);
 	}
 }
