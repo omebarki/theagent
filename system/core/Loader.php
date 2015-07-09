@@ -961,6 +961,7 @@ class CI_Loader {
 	 */
 	protected function _ci_load_library($class, $params = NULL, $object_name = NULL)
 	{
+		$class0 = $class;
 		// Get the class name, and while we're at it trim any slashes.
 		// The directory path can be included as part of the class name,
 		// but we don't want a leading slash
@@ -990,6 +991,7 @@ class CI_Loader {
 		}
 
 		// Let's search for the requested library file and load it.
+
 		foreach ($this->_ci_library_paths as $path)
 		{
 			// BASEPATH has already been checked for
@@ -999,7 +1001,6 @@ class CI_Loader {
 			}
 
 			$filepath = $path.'libraries/'.$subdir.$class.'.php';
-
 			// Safety: Was the class already loaded by a previous call?
 			if (class_exists($class, FALSE))
 			{
@@ -1018,6 +1019,7 @@ class CI_Loader {
 				log_message('debug', $class.' class already loaded. Second attempt ignored.');
 				return;
 			}
+			
 			// Does the file exist? No? Bummer...
 			elseif ( ! file_exists($filepath))
 			{

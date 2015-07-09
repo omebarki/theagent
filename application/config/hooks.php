@@ -12,6 +12,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
+$hook['pre_controller'] = array(
+    'class' => 'Libaauth',
+    'function' => 'checkACL',
+    'filename' => 'Libaauth.php',
+    'filepath' => 'libraries'
+);
+
 $hook['post_controller_constructor'] = array(
     'class' => 'LanguageLoader',
     'function' => 'initialize',

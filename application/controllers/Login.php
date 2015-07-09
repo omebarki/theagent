@@ -9,13 +9,11 @@ class Login extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-		//$this->lang->load("common","french");
-
+		$this->lang->load("frontoffice",$this->session->userdata('site_lang'));
     }
 
     public function index() {
-
-		$this->load->view('login_tpl');
+		$this->load->view('login_tpl',array(), TRUE);
     }
 
 	public function login() {

@@ -37,6 +37,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Connect</a></li>
 				<li><a href="#">My account</a></li>
+				<li><a href="/aauth/Aauth/logout">logout</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->

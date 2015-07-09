@@ -13,6 +13,7 @@ class Catalog extends MX_Controller {
     }
 
     public function index() {
+    	$this->checkAcl('catalog.read','/aauth/Aauth/logout');
 		$this->load->model('frontoffice/catalog_model','catalog');
 		
 		$data['title'] = lang("sale");

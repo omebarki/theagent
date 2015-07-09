@@ -60,6 +60,14 @@ class MX_Controller
 		return CI::$APP->$class;
 	}
 
+	protected function checkAcl($acl,$route = NULL){
+		$access = isset($this->session->userdata('acl')[$acl]);
+		if(!$access && !is_null($route)){
+			redirect($route);
+		}
+		return $access;
+	}
+
 	private function setSessionData(){
 		$language = $this->session->userdata('site_lang');
 		$locale   = '';
