@@ -38,7 +38,9 @@ require dirname(__FILE__).'/Base.php';
  **/
 class MX_Controller 
 {
-	public $autoload = array();
+	public $autoload    = array();
+	public $module_name;
+	public $class_name; 
 	
 	public function __construct() 
 	{
@@ -52,7 +54,23 @@ class MX_Controller
 		
 		/* autoload module items */
 		$this->load->_autoloader($this->autoload);
-		$this->setSessionData();
+		
+		/* set module and class names */
+		$this->module_name = $this->router->fetch_module();
+		$this->class_name  = $this->router->fetch_class();
+		if('/'.$this->module_name.'/'.$this->class_name.'/' !== $this->config->item('aauth')['login_page']){
+			/* set locale */
+			$this->setSessionLocale();
+
+			/* load module & controler locales */
+			$this->loadLocales();
+
+			/* load module & controler configs */
+			$this->loadConfs();
+
+			/* load inner module */
+			$this->loadModel();
+		}
 	}
 	
 	public function __get($class) 
@@ -68,12 +86,9 @@ class MX_Controller
 		return $access;
 	}
 
-	private function setSessionData(){
+	private function setSessionLocale(){
 		$language = $this->session->userdata('site_lang');
 		$locale   = '';
-		if(isset($_POST['language'])){
-
-		}
 		if($language == 'english'){
 			$locale = 'en_UK';
 		}
@@ -81,5 +96,25 @@ class MX_Controller
 			$locale = 'fr_FR';
 		}
 		$this->session->set_userdata('locale', $locale);
+	}
+
+	private function loadLocales(){
+		$this->lang->load(array(
+			$this->module_name,
+			$this->class_name
+		),$this->session->userdata('site_lang'));
+	}
+
+	private function loadConfs(){
+		$this->config->load($this->module_name);
+		$this->config->load($this->class_name);
+		$this->config_vars = array();
+		$this->config_vars[$this->module_name] = $this->config->item($this->module_name);
+		$this->config_vars[$this->class_name] = $this->config->item($this->class_name);
+	}
+
+	private function loadModel(){
+		$this->load->model($this->module_name.'/'.$this->class_name.'_model',$this->class_name);
+		$this->{$this->class_name}->locale = $this->session->userdata('locale');
 	}
 }

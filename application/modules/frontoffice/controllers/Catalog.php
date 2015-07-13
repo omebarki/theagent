@@ -9,19 +9,19 @@ class Catalog extends MX_Controller {
 
     public function __construct() {
         parent::__construct();
-		$this->lang->load("frontoffice",$this->session->userdata('site_lang'));
     }
 
     public function index() {
     	$this->checkAcl('catalog.read','/aauth/Aauth/logout');
-		$this->load->model('frontoffice/catalog_model','catalog');
 		
-		$data['title'] = lang("sale");
+		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb']);
+		
+		$data['title'] = $this->lang->line("sale");
 		$data['page_style'] = "homepage";
 		$data['content'] = $this->load->view(
 			'catalog_tpl',
 			array(
-				'list_catalog' => $this->catalog->get_list_catalog()
+				'list_catalog' => $catalogs
 			),
 			TRUE
 		);
@@ -30,15 +30,18 @@ class Catalog extends MX_Controller {
     }
 
     public function show($idCatalog){
-    	$this->load->model('frontoffice/catalog_model','catalog');
-		
-		$data['title'] = lang("catalog");
+		$this->checkAcl('catalog.read','/aauth/Aauth/logout');
+
+    	$catalog_details    = $this->catalog->get_catalog_details($idCatalog);
+    	$catalog_products   = $this->catalog->get_catalog_products($idCatalog);
+
+		$data['title']      = $this->lang->line("catalog");
 		$data['page_style'] = "homepage";
-		$data['content'] = $this->load->view(
+		$data['content']    = $this->load->view(
 			'show_catalog_tpl', 
 			array(
-				'catalog_details'  => $this->catalog->get_catalog_details($idCatalog),
-				'catalog_products' => $this->catalog->get_catalog_products($idCatalog, $this->session->userdata('locale')),
+				'catalog_details'  => $catalog_details[0],
+				'catalog_products' => $catalog_products,
 			),
 			TRUE
 		);

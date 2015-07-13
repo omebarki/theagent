@@ -20,9 +20,42 @@ a {
 	width:100%;
 }
 
-@media (min-width: 1300px) {
-  .container {
-    width: 1220px;
+@media (min-width: 1400px) {
+	.container {
+		width: 98%;
+	}
+}
+
+/* Modals / Popins */
+.modal-content {
+	box-shadow:none;
+	border-radius:0;
+	border:1px solid #000;
+}
+.modal-dialog {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.modal-body {
+    overflow-y: auto;
+}
+.modal-footer {
+    margin-top: 0;
+}
+.modal-content .btn-default {
+	position:absolute;
+	top:10px;
+	right:20px;
+	z-index:1;
+	color:#000;
+	font-weight:bold;
+}
+
+@media (max-width: 767px) {
+  .modal-dialog {
+    width: 100%;
   }
 }
 
@@ -48,7 +81,7 @@ a {
 /* buttons */
 .btn {
 	transition: all 0.2s ease;
-	border-radius:0;
+	border-radius:5px;
 }
 .btn-xs, .btn-group-xs > .btn {
 	padding:2px 5px;
@@ -180,7 +213,8 @@ fieldset[disabled] .btn-primary.active {
 		margin:0;
 		margin-right:-15px;
 	}
-	.navbar-default .navbar-brand {
+	.navbar-default .navbar-brand,
+	.navbar-inverse .navbar-brand  {
 		display:none;
 	}
 }

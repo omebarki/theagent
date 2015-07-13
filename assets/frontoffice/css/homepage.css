@@ -1,20 +1,102 @@
 /*  homepage CSS file for The Agent */
 
-.homeContainer > .row > .col-md-6 {
-	margin-bottom:40px;
+body.full {
+	background: url('../img/bg-homepage.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top:0;
 }
-.brandInfo {
-	border:1px solid #9A9999;
-	padding:10px 0;
+.footer .navbar {
+	margin-bottom:0;
 }
-.brandInfo div span {
+
+.loginContainer {
+	margin-top:60px;
+}
+.loginContainer p {
+	font-size:16px;
+	margin-top:10px;
 	font-weight:bold;
 }
-.brandInfo div {
-	margin-bottom:5px;
+.loginContainer p a.forgotPass {
+	color:#000;
+	text-decoration:none;
 }
+.loginContainer p a.forgotPass:hover {
+	color:#ff2d58;
+}
+
+.forceStatic {
+	max-width:250px !important;
+	clear:both;
+}
+
+form.homeLogin {
+	margin:50px 0;
+}
+form.homeLogin input {
+	margin-top:10px;
+	font-style:italic;
+	border:none;
+}
+form.homeLogin .btn {
+	float:right;
+	margin-top:10px;
+}
+
+.homeMainBlock {
+	padding:15px;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.userTypeRegisterBlock {
+	margin:20px 0;
+}
+
+.footer {
+	height:80px;
+	line-height:80px;
+}
+
+.footer .navbar,
+.footer .navbar .nav > li,
+.footer .navbar .nav > li a {
+	height:78px;
+	line-height:78px;
+}
+.footer .navbar .nav > li a {
+	padding:0 15px;
+	font-size:25px;
+	font-weight:bold;
+}
+.footer .navbar-brand {
+	height:78px;
+	line-height:78px;
+	margin-left:15px !important;
+	font-weight:bold;
+	color:#C1C1C1 !important;
+}
+.footer .navbar-toggle {
+	margin-top:20px;
+}
+
 @media (max-width: 767px) {
-	.brandInfo div.tar {
-		text-align:left;
+	.footer .navbar-collapse.in,
+	.footer .navbar-collapse.collapsing {
+		position:absolute;
+		bottom:77px;
+		width:100%;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+	.btn-primary {
+		padding:6px 6px;
+		font-size:12px;
+		white-space:normal;
+	}
+}
+@media (max-width: 399px) {
+	.btn-primary {
+		max-width:120px;
 	}
 }
