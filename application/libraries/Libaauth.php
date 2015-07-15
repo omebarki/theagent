@@ -332,6 +332,7 @@ class Libaauth {
 		$module    = $this->CI->router->fetch_module();
 		$controler = $this->CI->router->fetch_class();
 		$action    = $this->CI->router->fetch_method();
+
 		if($controler === "Aauth"){
 			return;
 		}

@@ -26,9 +26,11 @@ function forgotHandler(){
 		e.preventDefault();
 		$this = $(this);
 		$.ajax ({
-		    url: $this.attr('href'),
+		    url: $("#forgotForm").attr('action'),
 		    type: "POST",
-		    data: $('#login').serialize(),
+		    data: {
+		    	"email":$('[name="email"]').val(),
+		   	},
 		    success: function (json, status){
 		    	displayMsg(json.msg);
 		    }

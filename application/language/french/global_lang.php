@@ -2,4 +2,7 @@
 
 /* global locales */
 
-$lang['lg'] = 'fr';
+$lang['lg'] = 'en';
+$lang['the_agent'] = 'The Agent';
+$lang['email'] = 'Mail';
+$lang['or_delimiter'] = '- or -';

@@ -1,3 +1,4 @@
+<?php get_instance()->load->helper(array('html')) ?>
 <?= doctype('html5') ?>
 <html lang="en">
 <head>

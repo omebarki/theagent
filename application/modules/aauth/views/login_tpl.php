@@ -25,12 +25,18 @@
 						<div class="form_error"></div>
 						<div class="login_error"></div>
 						<div class="msg_success"></div>
-						<?= form_input(['class' => 'form-control', 'name' => 'email', 'placeholder' => lang("email"), 'id' => 'email']) ?>
-						<?= form_password(['class' => 'form-control', 'name' => 'password', 'placeholder' => lang("password"), 'id' => 'password']) ?>
+						<div class="form-group">
+							<?= form_input(['class' => 'form-control', 'name' => 'email', 'placeholder' => lang("email"), 'id' => 'email']) ?>
+						</div>
+						<div class="form-group">
+							<?= form_password(['class' => 'form-control', 'name' => 'password', 'placeholder' => lang("password"), 'id' => 'password']) ?>
+						</div>
 						<button type="submit" class="btn btn-sm btn-primary"><?= lang("OK") ?></button>
 						<p><a href="/aauth/Aauth/forgot" class="forgotPass" id="forgot"><?= lang("forgot_password") ?></a></p>
 					<?= form_close() ?>
 				</div>
+				<?= form_open('/aauth/Aauth/forgot', ['class' => '', 'role' => 'form', 'id' => 'forgotForm']) ?>
+				<?= form_close() ?>
 			</div>
 			<div class="clearfix"></div>
 			<div class="col-xs-12 homeMainBlock">

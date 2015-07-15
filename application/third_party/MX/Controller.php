@@ -58,9 +58,11 @@ class MX_Controller
 		/* set module and class names */
 		$this->module_name = $this->router->fetch_module();
 		$this->class_name  = $this->router->fetch_class();
+		
+		/* set locale */
+		$this->setSessionLocale();
+
 		if('/'.$this->module_name.'/'.$this->class_name.'/' !== $this->config->item('aauth')['login_page']){
-			/* set locale */
-			$this->setSessionLocale();
 
 			/* load module & controler locales */
 			$this->loadLocales();
@@ -86,8 +88,10 @@ class MX_Controller
 		return $access;
 	}
 
-	private function setSessionLocale(){
-		$language = $this->session->userdata('site_lang');
+	protected function setSessionLocale(){
+		$language = $this->input->cookie('user_lang')
+			? $this->config->config["lang_uri_abbr"][$this->input->cookie('user_lang')]
+			: $this->session->userdata('site_lang');
 		$locale   = '';
 		if($language == 'english'){
 			$locale = 'en_UK';
@@ -95,6 +99,7 @@ class MX_Controller
 		elseif($language == 'french'){
 			$locale = 'fr_FR';
 		}
+		$this->session->set_userdata('site_lang', $language);
 		$this->session->set_userdata('locale', $locale);
 	}
 
