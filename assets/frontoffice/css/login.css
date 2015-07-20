@@ -13,7 +13,8 @@ body.full {
 }
 
 .loginContainer {
-	margin-top:60px;
+	padding-top:60px;
+	margin-bottom:90px;
 }
 .loginContainer p {
 	font-size:16px;
@@ -43,7 +44,7 @@ form.homeLogin input {
 }
 form.homeLogin .btn {
 	float:right;
-	margin-top:0px;
+	margin-top:10px;
 }
 
 .homeMainBlock {
@@ -57,6 +58,10 @@ form.homeLogin .btn {
 .footer {
 	height:80px;
 	line-height:80px;
+	background-color:#000;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer .navbar,
@@ -81,7 +86,27 @@ form.homeLogin .btn {
 	margin-top:20px;
 }
 
+@media (max-width: 991px) {
+	.btn-primary {
+		padding:6px 6px;
+		font-size:12px;
+		white-space:normal;
+		max-width:120px;
+	}
+}
 @media (max-width: 767px) {
+	body {
+		margin-bottom:90px;
+	}
+	.loginContainer {
+		padding-top:20px;
+	}
+	form.homeLogin {
+		margin:20px 0;
+	}
+	.userTypeRegisterBlock {
+		margin-bottom:0;
+	}
 	.footer .navbar-collapse.in,
 	.footer .navbar-collapse.collapsing {
 		position:absolute;
@@ -89,14 +114,27 @@ form.homeLogin .btn {
 		width:100%;
 		background-color: rgba(0, 0, 0, 0.8);
 	}
-	.btn-primary {
-		padding:6px 6px;
-		font-size:12px;
-		white-space:normal;
+}
+@media (min-width: 768px) {
+	.footer .navbar-inverse .navbar-brand {
+		display:none;
 	}
 }
-@media (max-width: 399px) {
-	.btn-primary {
-		max-width:120px;
+@media (max-width: 991px) and (orientation:landscape) {
+    .forceTablet {
+		width:50% !important;
+	}
+	.footer {
+		height:50px;
+		line-height:50px;
+	}
+	.footer .navbar,
+	.footer .navbar .nav > li,
+	.footer .navbar .nav > li a {
+		height:48px;
+		line-height:48px;
+	}
+	.footer .navbar .nav > li a {
+		font-size:15px;
 	}
 }

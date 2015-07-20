@@ -11,9 +11,11 @@
 
 $config['aauth'] = array(
     'login_page' => '/aauth/Aauth/',
+    'login_page_bck' => '/aauth/Bauth/',
     // if user don't have permisssion to see the page he will be
     // redirected the page spesificed below
     'no_permission' => '/aauth/Aauth/',
+    'no_permission_bck' => '/aauth/Bauth/',
     //name of admin group
     'admin_group' => 'admin',
     //name of default group, the new user is added in it

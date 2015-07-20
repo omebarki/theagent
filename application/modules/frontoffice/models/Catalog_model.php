@@ -15,7 +15,7 @@ class Catalog_model extends CI_Model {
 	 *
 	 * @return      Array
 	 */
-	public function get_list_catalog($init = NULL) {
+	public function get_list_catalog($init = NULL, $filters = array()) {
 		$this->db
 		->select('c.id, DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku,MIN(p.price) as minPrice, MAX(p.price) as maxPrice')
 		->from('catalog c')
@@ -30,9 +30,16 @@ class Catalog_model extends CI_Model {
 		->group_by('c.idSaleFruitrouge')
 		->order_by('dateStart DESC');
 
-
+		//init
 		if(!is_null($init)){
 			$this->db->limit($init);
+		}
+
+		//filters
+		if(!empty($filters)){
+			foreach($filters as $key => $filter){
+				$this->db->where_in($key,implode(',',$filter));
+			}
 		}
 
 		//var_dump($this->db->get_compiled_select());die();

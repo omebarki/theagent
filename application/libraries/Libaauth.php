@@ -265,6 +265,8 @@ class Libaauth {
 			$this->update_last_login($row->id);
 			$this->update_activity();
 			$this->reset_login_attempts($row->id);
+
+			$this->generateACL($row->id);
 			
 			return TRUE;
 		}
@@ -323,6 +325,8 @@ class Libaauth {
 		return FALSE;
 	}
 
+
+
 	/**
 	 * Controls if a logged or public user has permissions for module/controler/action
 	 * 
@@ -333,11 +337,12 @@ class Libaauth {
 		$controler = $this->CI->router->fetch_class();
 		$action    = $this->CI->router->fetch_method();
 
-		if($controler === "Aauth"){
+		if(in_array($controler, array("Aauth","Bauth"))){
 			return;
 		}
 		if(!$this->is_loggedin()){
-			redirect($this->config_vars['no_permission']);
+			$nop = $module == 'backoffice' ? '_bck' : '';
+			redirect($this->config_vars['no_permission'.$nop]);
 		}
 		if( ! $this->CI->session->has_userdata('acl')){
 			$this->generateACL($this->CI->session->userdata('id'));
@@ -355,15 +360,16 @@ class Libaauth {
 		$group_roles = !empty($groups) 
 			? $this->get_group_roles($groups[0]->group_id)
 			: array();
-		
 		// melt roles for group & user
-		$roles     = array_map(
+		$roles     = array_unique(array_map(
 			function(stdClass $o){return $o->role_id;},
-			array_unique(array_merge(
+			array_merge(
 				$group_roles,
 				$this->get_user_roles($user_id)
-			))
-		);
+			)
+		));
+		// generate roles in session
+		$this->generateRoles($roles);
 		// melt perms for those roles
 		foreach($roles as $role_id){
 			$perms = array_map(
@@ -385,6 +391,18 @@ class Libaauth {
 		}
 		//set in session
 		$this->CI->session->set_userdata('acl',array_flip($acl));
+	}
+
+	public function generateRoles($roles){
+		$this->CI->db->select('code');
+		$this->CI->db->from($this->config_vars['roles']);
+		$this->CI->db->where_in('id', $roles);
+
+		$rslt = array_map(
+			function(stdClass $o){return $o->code;},
+			$this->CI->db->get()->result()
+		);
+		$this->CI->session->set_userdata('role',array_flip($rslt));
 	}
 
 	/**

@@ -56,7 +56,12 @@ class Aauth extends MX_Controller {
                         $this->input->post('email'), 
                         $this->input->post('password'))
                     ){
-                    $redirect = '/frontoffice/catalog/';
+                    if($this->checkAccess('role','dealer') || $this->checkAccess('role','admin')){
+                        $redirect = '/frontoffice/catalog/';
+                    }
+                    elseif($this->checkAccess('role','brand')){
+                        $redirect = '/frontoffice/brand/';
+                    }
                 }
             }
             $this->output

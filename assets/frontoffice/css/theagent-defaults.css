@@ -9,7 +9,8 @@ html {
 body {
 	font-family:'Century gothic';
 	color:#000;
-	padding-top:70px;
+	padding-top:80px;
+	overflow-x:hidden;
 }
 
 a {
@@ -62,7 +63,7 @@ a {
 /* form elements */
 .form-control {
 	border-radius:0;
-	border:1px solid #848383;
+	border:1px solid #FFF;
 }
 .form-control:focus {
 	border:1px solid #848383;
@@ -85,6 +86,11 @@ a {
 }
 .btn-xs, .btn-group-xs > .btn {
 	padding:2px 5px;
+}
+
+.btn-default {
+	border-color:#888787;
+	color:#6B6B6B;
 }
 
 .btn-primary {
@@ -136,6 +142,7 @@ fieldset[disabled] .btn-primary.active {
 /* navbar */
 .navbar {
 	min-height:inherit;
+	margin-bottom:0;
 }
 .navbar-default {
 	background-color: transparent;
@@ -149,7 +156,7 @@ fieldset[disabled] .btn-primary.active {
 }
 .navbar-brand {
 	padding:0;
-	height:58px;
+	height:80px;
 }
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
 	margin-left:0;
@@ -163,9 +170,11 @@ fieldset[disabled] .btn-primary.active {
 	background-color: transparent;
 }
 .navbar-nav > li > a {
-	padding-bottom:10px;
-	padding-top:10px;
-	font-size:16px;
+	padding-bottom:15px;
+	padding-top:15px;
+	font-size:20px;
+	line-height:26px;
+	font-weight:bold;
 	transition: all 0.2s ease;
 }
 .navbar-default .navbar-nav > li > a {
@@ -189,7 +198,6 @@ fieldset[disabled] .btn-primary.active {
 	background:#000;
 }
 .navbar-inverse {
-	background-color: transparent;
 	border-color: transparent;
 }
 .navbar-fixed-top {
@@ -200,6 +208,18 @@ fieldset[disabled] .btn-primary.active {
 	padding:15px;
 	line-height:20px;
 	font-weight:bold;
+}
+.navbar-fixed-top .navbar-header {
+	float:left;
+}
+.navbar-fixed-top .nav > li {
+	float:left;
+}
+.navbar-fixed-top .navbar-right {
+	float:right;
+}
+.navbar-nav > li > .dropdown-menu {
+	border-radius:5px;
 }
 @media (min-width: 768px) {
 	.navbar-collapse {
@@ -212,10 +232,6 @@ fieldset[disabled] .btn-primary.active {
 	.navbar-form {
 		margin:0;
 		margin-right:-15px;
-	}
-	.navbar-default .navbar-brand,
-	.navbar-inverse .navbar-brand  {
-		display:none;
 	}
 }
 
@@ -242,5 +258,32 @@ fieldset[disabled] .btn-primary.active {
 	right:9px;
 }
 .bootstrap-select.btn-group .btn .filter-option {
-	border-right:1px solid #848383;
+}
+
+/*----------------------------------------------------------
+------------ BOOTSTRAP DATE SELECTS RESETS -----------------
+----------------------------------------------------------*/
+.datepicker table tr td.active, .datepicker table tr td.active:hover, .datepicker table tr td.active.disabled, .datepicker table tr td.active.disabled:hover {
+	background:#ff2d58 !important;
+}
+
+/* bootstrap equal height */
+@media (min-width: 768px) {
+	.row-full-height {
+		height: 100%;
+	}
+	.col-full-height {
+		height: 100%;
+		vertical-align: middle;
+	}
+	.row-same-height {
+		display: table;
+		width: 100%;
+		/* fix overflow */
+		table-layout: fixed;
+	}
+	.col-xs-height {
+		display: table-cell;
+		float: none !important;
+	}
 }

@@ -61,9 +61,11 @@ class MX_Controller
 		
 		/* set locale */
 		$this->setSessionLocale();
-
-		if('/'.$this->module_name.'/'.$this->class_name.'/' !== $this->config->item('aauth')['login_page']){
-
+		if( ! in_array('/'.$this->module_name.'/'.$this->class_name.'/', array(
+				$this->config->item('aauth')['login_page'],
+				$this->config->item('aauth')['login_page_bck']
+				))
+			){
 			/* load module & controler locales */
 			$this->loadLocales();
 
@@ -80,8 +82,8 @@ class MX_Controller
 		return CI::$APP->$class;
 	}
 
-	protected function checkAcl($acl,$route = NULL){
-		$access = isset($this->session->userdata('acl')[$acl]);
+	protected function checkAccess($type, $value, $route = NULL){
+		$access = isset($this->session->userdata($type)[$value]);
 		if(!$access && !is_null($route)){
 			redirect($route);
 		}
