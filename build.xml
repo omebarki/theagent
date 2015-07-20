@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare"
+         depends="prepare,phpmd"
          description=""/>
 
 <target name="prepare"
@@ -34,8 +34,10 @@
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
 		<exec executable="${toolsdir}phpmd" taskname="phpmd">
 			<arg path="${basedir}/application" />
-			<arg value="text" />
+			<arg value="html" />
 			<arg path="${basedir}/build/phpmd.xml" />
+			<arg value="--reportfile" />
+			<arg path="${basedir}/build/logs/pmd.html" />
   		</exec>
   </target>
 </project>
