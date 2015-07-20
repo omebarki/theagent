@@ -33,7 +33,7 @@
          unless="phpmd.done"
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
 		<exec executable="${toolsdir}phpmd" taskname="phpmd">
-			<arg path="${basedir}/src" />
+			<arg path="${basedir}/application" />
 			<arg value="text" />
 			<arg path="${basedir}/build/phpmd.xml" />
   		</exec>
