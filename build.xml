@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare,phpmd"
+         depends="prepare,phpmd,phpunit"
          description=""/>
 
 <target name="prepare"
@@ -40,4 +40,14 @@
 			<arg path="${basedir}/build/logs/pmd.html" />
   		</exec>
   </target>
+  <target name="phpunit"
+         unless="phpunit.done"
+         depends="prepare"
+         description="Run unit tests with PHPUnit">
+	  <exec executable="${toolsdir}phpunit" failonerror="true" taskname="phpunit">
+		   <arg value="--configuration"/>
+		   <arg path="${basedir}/build/phpunit.xml"/>
+	  </exec>
+	  <property name="phpunit.done" value="true"/>
+ </target>
 </project>
