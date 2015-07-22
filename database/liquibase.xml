@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="TheAgent" xmlns:liquibase="antlib:liquibase.integration.ant">
+	<!-- ant -Ddatabase.tag=1.0.0 -f liquibase.xml -Ddatabase.filepath=./database.properties  rollbackMysqlDatabase -->
+	<taskdef resource="liquibase/integration/ant/antlib.xml" uri="antlib:liquibase.integration.ant" />
+
+	<property file="${database.filepath}"/>
+
+	<liquibase:database id="mysql-database" driver="${database.driver}" url="${database.url}" user="${database.username}" password="${database.password}" />
+
+	<target name="check-version-dbscripts">
+    	<available file="${basedir}/dbchangeset/${database.tag}" property="version.database.present"/>
+	</target>
+
+	<target name="updateMysqlDatabase" depends="check-version-dbscripts" if="version.database.present">
+		<fail unless="database.tag" message="La variable 'database.tag' est vide"/>
+		<liquibase:updateDatabase databaseRef="mysql-database" changelogFile="${basedir}/dbchangeset/changeLog.xml"/>
+		<liquibase:tagDatabase databaseref="mysql-database" tag="${database.tag}" />
+	</target>
+
+
+	<target name ="rollbackMysqlDatabase">
+		<fail unless="database.tag" message="La variable 'database.tag' est vide"/>
+		<liquibase:rollbackDatabase  databaseRef="mysql-database" changelogFile="${basedir}/dbchangeset/changeLog.xml" rollbacktag="${database.tag}"/>
+	</target>
+
+</project>

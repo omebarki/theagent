@@ -51,11 +51,14 @@ class Aauth extends MX_Controller {
                     array('required' => $this->lang->line("password_must_provide"))
             );
             $redirect = false;
+            //FORM VALIDATION
             if ($this->form_validation->run() != FALSE){
+                //LOGIN TEST
                 if ($this->aauth->login(
                         $this->input->post('email'), 
                         $this->input->post('password'))
                     ){
+                    //REDIRECTION TO ROLE
                     if($this->checkAccess('role','dealer') || $this->checkAccess('role','admin')){
                         $redirect = '/frontoffice/catalog/';
                     }

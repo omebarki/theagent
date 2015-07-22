@@ -3,11 +3,10 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Catalog_model extends CI_Model {
+class Catalog_model extends MX_Model {
 	
 	public function __construct() {
         parent::__construct();
-		$this->load->database();
     }
 
     /**
@@ -38,7 +37,7 @@ class Catalog_model extends CI_Model {
 		//filters
 		if(!empty($filters)){
 			foreach($filters as $key => $filter){
-				$this->db->where_in($key,implode(',',$filter));
+				$this->db->where_in($key,$filter);
 			}
 		}
 

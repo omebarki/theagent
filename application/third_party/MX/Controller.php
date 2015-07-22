@@ -59,8 +59,8 @@ class MX_Controller
 		$this->module_name = $this->router->fetch_module();
 		$this->class_name  = $this->router->fetch_class();
 		
-		/* set locale */
-		$this->setSessionLocale();
+		/* set session variables */
+		$this->setSession();
 		if( ! in_array('/'.$this->module_name.'/'.$this->class_name.'/', array(
 				$this->config->item('aauth')['login_page'],
 				$this->config->item('aauth')['login_page_bck']
@@ -90,6 +90,13 @@ class MX_Controller
 		return $access;
 	}
 
+	protected function setSession(){
+		$this->setSessionLocale();
+		if($this->checkAccess('role','dealer') && !$this->session->has_userdata('wish')){
+			$this->setSessionWish();
+		}
+	}
+
 	protected function setSessionLocale(){
 		$language = $this->input->cookie('user_lang')
 			? $this->config->config["lang_uri_abbr"][$this->input->cookie('user_lang')]
@@ -105,6 +112,21 @@ class MX_Controller
 		$this->session->set_userdata('locale', $locale);
 	}
 
+	protected function setSessionWish(){
+		$this->loadModel('frontoffice/wishlist');
+		$this->session->set_userdata('wish', $this->wishlist->load());
+	}	
+
+	protected function loadModel($path = null){
+		$module_name = $this->module_name;
+		$class_name  = $this->class_name;
+		if(!is_null($path)){
+			list($module_name, $class_name) = explode('/',$path);
+		}
+		$this->load->model($module_name.'/'.$class_name.'_model',$class_name);
+		$this->{$class_name}->locale = $this->session->userdata('locale');
+	}
+
 	private function loadLocales(){
 		$this->lang->load(array(
 			$this->module_name,
@@ -118,10 +140,5 @@ class MX_Controller
 		$this->config_vars = array();
 		$this->config_vars[$this->module_name] = $this->config->item($this->module_name);
 		$this->config_vars[$this->class_name] = $this->config->item($this->class_name);
-	}
-
-	private function loadModel(){
-		$this->load->model($this->module_name.'/'.$this->class_name.'_model',$this->class_name);
-		$this->{$this->class_name}->locale = $this->session->userdata('locale');
 	}
 }

@@ -10,7 +10,11 @@
 
 <?= $this->load->view('frontoffice/initCSS_tpl') ?>
 <link href="<?= base_url() ?>assets/frontoffice/css/layout.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/frontoffice/css/<?= $page_style ?>.css" rel="stylesheet">
+<?php if(isset($assets) && isset($assets['css'])): ?>
+<?php foreach($assets['css'] as $css) : ?>
+<link href="<?= base_url() ?>assets/frontoffice/css/<?= $css ?>.css" rel="stylesheet">
+<?php endforeach; ?>
+<?php endif; ?>
 </head>
 <body>
 <!-- Page Content -->
@@ -42,21 +46,8 @@
 <div id="loveBrandList">
 	<i class="upArrow"></i>
 	<div class="lovedBrands">
-		<?php foreach($wishList as $whish): ?>
-		<div class="brandColumn">
-			<a href="/frontoffice/catalog/show/<?= $wish->id ?>">
-				<img src=" http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $wish->idSaleFruitrouge ?>/currentSaleV4.jpg" width="450" height="340" class="img-responsive">
-				<img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $wish->idSaleFruitrouge ?>/baselineFR-fr.jpg" width="450" height="340" class="img-responsive">
-			</a>
-			<a class="addToFavorites active" data-sale="sale_4001" title="<?= lang('mark_as_favorite_brand') ?>"></a>
-			<div class="brandInfo clearfix">
-				<div class="fr cr tar"><?= lang("available_until") ?> : <span><?= nice_date($wish->dateEnd, 'm/d/Y') ?></span></div>
-				<div class=""><?= lang("brand") ?> : <span><?= $wish->brandName ?></span></div>
-				<div class=""><?= lang("sku") ?> : <span><?= $wish->nbSku ?></span></div>
-				<div class="fr cr tar"><?= lang("ws_price_range") ?> : <span><?= $wish->minPrice ?>€ / <?= $wish->maxPrice ?>€</span></div>
-				<div class=""><?= lang("stock") ?> : <span><?= $wish->totalStock ?></span></div>
-			</div>
-		</div>
+		<?php foreach($wishList as $wish): ?>
+			<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
 		<?php endforeach; ?>
 	</div>
 </div>
@@ -76,5 +67,10 @@
 </footer>
 <!-- footer end -->
 <?= $this->load->view('frontoffice/initJS_tpl') ?>
+<?php if(isset($assets) && isset($assets['js'])): ?>
+<?php foreach($assets['js'] as $js) : ?>
+<script src="<?= base_url() ?>assets/frontoffice/js/<?= $js ?>.js" type="text/javascript"></script>
+<?php endforeach; ?>
+<?php endif; ?>
 </body>
 </html>
