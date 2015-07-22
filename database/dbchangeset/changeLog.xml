@@ -10,5 +10,6 @@
 	>
 
 	<include relativeToChangelogFile="true" file="1.0.1/1.0.1_changesets.xml"/>
+	<include relativeToChangelogFile="true" file="1.0.2/1.0.2_changesets.xml"/>
 
 </databaseChangeLog>
