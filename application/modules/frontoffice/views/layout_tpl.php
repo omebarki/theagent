@@ -45,7 +45,7 @@
 
 <div id="loveBrandList">
 	<i class="upArrow"></i>
-	<div class="lovedBrands">
+	<div class="lovedBrands owl-carousel">
 		<?php foreach($wishList as $wish): ?>
 			<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
 		<?php endforeach; ?>
