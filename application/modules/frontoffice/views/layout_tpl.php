@@ -9,7 +9,6 @@
 <title>The Agent - <?= $title ?></title>
 
 <?= $this->load->view('frontoffice/initCSS_tpl') ?>
-<link href="<?= base_url() ?>assets/frontoffice/css/layout.css" rel="stylesheet">
 <?php if(isset($assets) && isset($assets['css'])): ?>
 <?php foreach($assets['css'] as $css) : ?>
 <link href="<?= base_url() ?>assets/frontoffice/css/<?= $css ?>.css" rel="stylesheet">
