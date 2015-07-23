@@ -13,8 +13,12 @@ class Catalog extends MX_Controller {
 
     public function index() {
     	$this->checkAccess('acl', 'catalog.read', '/aauth/Aauth/logout');
-
-		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb']);
+    	$post     = $this->input->post();
+    	$filters  = array();
+    	if(!empty($post)){
+    		var_dump($post);die();
+    	}
+		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb'],$filters);
 		$wishes   = (array)$this->session->userdata('wish');
 		$wishList = !empty($wishes) 
 			? $this->catalog->get_list_catalog(NULL,array('c.id' => $wishes))

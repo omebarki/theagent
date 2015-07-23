@@ -9,8 +9,9 @@ html {
 body {
 	font-family:'Century gothic';
 	color:#000;
-	padding-top:80px;
+	padding-top:70px;
 	overflow-x:hidden;
+	font-size:1em;
 }
 
 a {
@@ -156,7 +157,7 @@ fieldset[disabled] .btn-primary.active {
 }
 .navbar-brand {
 	padding:0;
-	height:80px;
+	height:70px;
 }
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
 	margin-left:0;
@@ -172,7 +173,7 @@ fieldset[disabled] .btn-primary.active {
 .navbar-nav > li > a {
 	padding-bottom:15px;
 	padding-top:15px;
-	font-size:20px;
+	font-size:0.9em;
 	line-height:26px;
 	font-weight:bold;
 	transition: all 0.2s ease;
@@ -220,6 +221,10 @@ fieldset[disabled] .btn-primary.active {
 }
 .navbar-nav > li > .dropdown-menu {
 	border-radius:5px;
+}
+.dropdown-menu > li > a {
+	font-size:0.9em;
+	line-height:1;
 }
 @media (min-width: 768px) {
 	.navbar-collapse {

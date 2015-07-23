@@ -9,6 +9,7 @@
 <title>The Agent - <?= $title ?></title>
 
 <?= $this->load->view('frontoffice/initCSS_tpl') ?>
+<link href="<?= base_url() ?>assets/frontoffice/css/layout.css" rel="stylesheet">
 <?php if(isset($assets) && isset($assets['css'])): ?>
 <?php foreach($assets['css'] as $css) : ?>
 <link href="<?= base_url() ?>assets/frontoffice/css/<?= $css ?>.css" rel="stylesheet">
@@ -23,7 +24,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top fullwidth-bar">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="#" class="navbar-brand"><img src="<?= base_url() ?>assets/frontoffice/img/the-agent-logo-white.png" width="256" height="56" alt="<?= lang('the_agent') ?>"></a>
+			<a href="#" class="navbar-brand"><img src="<?= base_url() ?>assets/frontoffice/img/the-agent-logo-white.png" width="179" height="40" alt="<?= lang('the_agent') ?>"></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
@@ -42,14 +43,14 @@
 		</ul>
 	</div><!--/.container-fluid -->
 
-<div id="loveBrandList">
-	<i class="upArrow"></i>
-	<div class="lovedBrands owl-carousel">
-		<?php foreach($wishList as $wish): ?>
-			<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
-		<?php endforeach; ?>
+	<div id="loveBrandList">
+		<i class="upArrow"></i>
+		<div class="lovedBrands owl-carousel">
+			<?php foreach($wishList as $wish): ?>
+				<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
+			<?php endforeach; ?>
+		</div>
 	</div>
-</div>
 
 </nav>
 
