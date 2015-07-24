@@ -9,6 +9,7 @@ $(document).ready(function() {
       flyImageToFavs(catalog_id);
     }
   });
+  
 });
 
 // animate image move to quote cart
