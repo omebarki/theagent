@@ -16,7 +16,7 @@ class Catalog extends MX_Controller {
     	$post     = $this->input->post();
     	$filters  = array();
     	if(!empty($post)){
-    		var_dump($post);die();
+    		
     	}
 		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb'],$filters);
 		$wishes   = (array)$this->session->userdata('wish');
