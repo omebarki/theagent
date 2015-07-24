@@ -1,31 +1,57 @@
 /*  catalog page CSS file for The Agent */
-
+.brandDetailsBlock {
+	border-bottom:4px solid #2B2A2A;
+	padding-bottom:10px;
+	font-size:0.8em;
+	line-height:1.1em;
+}
 .brandDetailsBlock .brandInfos {
 	width:34%;
 	vertical-align:top;
+	padding-right:20px;
 }
 .brandDetailsBlock .brandImage {
 	width:66%;
-	vertical-align:top;
+	vertical-align:bottom;
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
 }
 
 .brandDetailsBlock .brandLogo {
-	height:10%;
 }
 	.brandDetailsBlock .brandLogo img {
-		height:100%;
+		max-height:70px;
 		width:auto;
 	}
 .brandDetailsBlock .brandAbout {
-	height:40%;
+	padding-bottom:10px;
 }
 .brandDetailsBlock .brandLogistics {
-	height:30%;
+	padding-bottom:10px;
 }
 .brandDetailsBlock .brandContact {
-	height:20%;
+	vertical-align:bottom;
 }
+	.brandDetailsBlock .brandContact .dTable .dTableCell {
+		vertical-align:bottom;
+	}
+	.brandDetailsBlock .brandContact p img {
+		margin-right:20px;
+		max-height:100%;
+		width:auto;
+	}
 
+.brandImage .buttonHolder {
+	clear:both;
+	padding:20px 0 0 0;
+	background:#FFF;
+}
+	.brandImage .btn {
+		width:200px;
+		font-size:1em;
+	}
 
 @media (max-width: 991px) {
 }

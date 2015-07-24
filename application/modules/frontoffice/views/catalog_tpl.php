@@ -1,4 +1,3 @@
-
 <!-- content homepage -->
 <div class="container mainContainer" role="main">
 	<?php if( ! empty($list_catalog)): ?>

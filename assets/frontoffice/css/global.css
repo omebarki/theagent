@@ -48,6 +48,29 @@
 .voffset8 { margin-top: 100px; }
 .voffset9 { margin-top: 150px; }
 
+h4 {
+	margin:10px 0;
+	font-size:1em;
+	font-weight:bold;
+}
+
+.btn-default-black {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+.dTable {
+	display:table;
+	height:100%;
+}
+.dTableRow {
+	display: table-row;
+}
+.dTableCell {
+	display:table-cell;
+}
+
 .mainContainer {
 	margin-top:20px;
 	margin-bottom:20px;

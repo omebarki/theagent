@@ -4,17 +4,33 @@
 		<div class="brandDetailsBlock row-same-height row-full-height">
 			<div class="brandInfos col-xs-height col-full-height">
 				<div class="brandLogo"><img src="<?= base_url() ?>assets/frontoffice/img/temp/logo-angels.jpg" width="600" height="147" alt="Angels never die"></div>
-				<div class="brandAbout"></div>
-				<div class="brandLogistics"></div>
-				<div class="brandContact"></div>
+				<div class="brandAbout">
+					<h4>About the brand</h4>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+				</div>
+				<div class="brandLogistics">
+					<h4>About the logistic</h4>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+				</div>
+				<div class="brandContact">
+					<h4>Sales contact</h4>
+					<div class="dTable">
+						<p class="dTableCell"><img src="<?= base_url() ?>assets/frontoffice/img/temp/business-man.jpg" width="100" height="100" alt=""></p>
+						<p class="dTableCell">
+							<strong>Bertrand Thoral</strong></br>
+							Phone: +33 1 45 677 897</br>
+							Mail: bertrand@theagent.com
+						</p>
+					</div>
+				</div>
 			</div>
-			<div class="brandImage col-xs-height col-full-height">
-				<img src="img/temp/banner-brand.jpg" width="1155" height="674" alt="Angels never die" class="img-responsive">
-				<div class="clearfix"></div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
+			<div class="brandImage col-xs-height col-full-height" style="background:url('<?= base_url() ?>assets/frontoffice/img/temp/banner-brand.jpg') no-repeat center center scroll;">
+				<div class="buttonHolder clearfix">
+					<div class="col-md-3"><a class="btn btn-lg btn-default btn-default-black">Show me my selection</a></div>
+					<div class="col-md-3"><a class="btn btn-lg btn-default btn-default-black">Plan the sales</a></div>
+					<div class="col-md-3"><a class="btn btn-lg btn-default btn-default-black">Marketing material</a></div>
+					<div class="col-md-3"><a class="btn btn-lg btn-default btn-default-black">Download the pack</a></div>
+				</div>
 			</div>
 		</div>
 	</div>
