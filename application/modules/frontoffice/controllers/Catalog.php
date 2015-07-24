@@ -54,13 +54,13 @@ class Catalog extends MX_Controller {
 
 		$this->data['firstname']    = $this->session->userdata('id');
 		$this->data['wishList']     = $wishList;
-		$data['title']              = $this->lang->line("catalog");
+		$this->data['title']        = $this->lang->line("catalog");
 		$this->data['assets']       = array(
 			'css'                   => array("catalog"),
 			'js'                    => array("catalog"),
 		);
-		$data['page_style']         = "show_catalog";
-		$data['content']            = $this->load->view(
+		$this->data['page_style']   = "show_catalog";
+		$this->data['content']      = $this->load->view(
 			'show_catalog_tpl', 
 			array(
 				'catalog_details'   => $catalog_details[0],
@@ -69,7 +69,7 @@ class Catalog extends MX_Controller {
 			TRUE
 		);
 
-		$this->load->view('layout_tpl', $data);
+		$this->load->view('layout_tpl', $this->data);
     }
 
 	public function addWish($idCatalog){
