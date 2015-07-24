@@ -45,6 +45,7 @@ class Aauth extends MX_Controller {
 */
 
     public function login() {
+        
         if($this->input->is_ajax_request()){
             $this->form_validation->set_rules('email', $this->lang->line("email"), 'required|valid_email');
             $this->form_validation->set_rules('password', $this->lang->line("password"), 'required',
