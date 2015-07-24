@@ -59,14 +59,14 @@
 
 /* Top navigation */
 .navbar-fixed-top {
-	height:80px;
+	height:70px;
 }
 .navbar-header .navbar-brand {
-	padding-top:10px;
+	padding-top:15px;
 }
 
 .navbar-fixed-top .navbar-right {
-	margin-top:10px;
+	margin-top:5px;
 }
 .navbar-fixed-top .userIcon {
 	border-radius:30px;
@@ -125,7 +125,9 @@
 	border-radius:0;
 	border:none;
 	padding-left:60px;
-	height:56px;
+	height:50px;
+	line-height:20px;
+	margin-top:4px;
 }
 #loveBrandsButton:hover,
 #loveBrandsButton:focus {
@@ -133,7 +135,7 @@
 }
 .heartIconTop {
 	position:absolute;
-	top:10px;
+	top:8px;
 	left:15px;
 	width:35px;
 	height:35px;
@@ -181,7 +183,6 @@ i.upArrow {
 .navbar-fixed-top ul.dropdown-menu > li > a {
 	font-weight:bold;
 	color:#666 !important;
-	font-size:16px;
 	padding:8px 15px !important;
 }
 .navbar-fixed-top ul.dropdown-menu .divider {
@@ -250,7 +251,8 @@ i.upArrow {
 #loveBrandList {
 	position:fixed;
 	z-index:1100; /* navbar is 1030 */
-	top:-500px;
+	/*top:-500px;*/
+	top:-800px;
 	opacity:0;
 	width:100%;
 	padding:15px;

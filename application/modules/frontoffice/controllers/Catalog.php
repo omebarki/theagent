@@ -26,7 +26,6 @@ class Catalog extends MX_Controller {
 		$this->data['wishList']     = $wishList;
 		$this->data['title']        = $this->lang->line("catalog");
 		$this->data['assets']       = array(
-			'css'                   => array("catalog"),
 			'js'                    => array("catalog"),
 		);
 		$this->data['is_full_page'] = true;
@@ -52,6 +51,10 @@ class Catalog extends MX_Controller {
 		$this->data['firstname']    = $this->session->userdata('id');
 		$this->data['wishList']     = $wishList;
 		$data['title']              = $this->lang->line("catalog");
+		$this->data['assets']       = array(
+			'css'                   => array("catalog"),
+			'js'                    => array("catalog"),
+		);
 		$data['page_style']         = "show_catalog";
 		$data['content']            = $this->load->view(
 			'show_catalog_tpl', 

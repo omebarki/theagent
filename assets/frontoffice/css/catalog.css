@@ -1,124 +1,43 @@
 /*  catalog page CSS file for The Agent */
 
-.brandInfoCol img {
-	clear:both;
+.brandDetailsBlock .brandInfos {
+	width:34%;
+	vertical-align:top;
 }
-.brandInfoCol .btn {
-	border-radius:6px;
-	text-transform:uppercase;
-	font-size:14px;
-	font-weight:bold;
-	width:200px;
-	display:block;
-	margin:auto;
-	margin-bottom:10px;
-	clear:both;
+.brandDetailsBlock .brandImage {
+	width:66%;
+	vertical-align:top;
 }
+
+.brandDetailsBlock .brandLogo {
+	height:10%;
+}
+	.brandDetailsBlock .brandLogo img {
+		height:100%;
+		width:auto;
+	}
+.brandDetailsBlock .brandAbout {
+	height:40%;
+}
+.brandDetailsBlock .brandLogistics {
+	height:30%;
+}
+.brandDetailsBlock .brandContact {
+	height:20%;
+}
+
 
 @media (max-width: 991px) {
-	.brandInfoCol .btn {
-		display:inline-block;
-		width:190px;
-	}
-}
-@media (max-width: 499px) {
-	.brandInfoCol .btn {
-		width:170px;
-		font-size:12px;
-	}
 }
 
+@media (max-width: 499px) {
+}
 
 @media (min-width: 768px) {
-	.productRow {
-		margin-bottom:20px;
-	}
-	.viewdetails.collapse {
-		display: block !important;
-		height: auto !important;
-		padding-bottom: 0;
-		overflow: visible !important;
-	}
-	.btn_viewdetails {
-		display:none;
-	}
 }
-.productColumn {
-	border:1px solid #000;
-}
-.productColumn .productInfo {
-	border-top:1px solid #000;
-	padding:10px;
-	font-size:14px;
-}
-.productColumn .productName {
-	font-weight:bold;
-	font-size:16px;
-}
-.productCheck {
-	display:block;
-	overflow:hidden;
-	text-align:center;
-	position:relative;
-	padding:10px 0;
-}
-.productCheck input[type="checkbox"] {
-	position:absolute;
-	left:-9999px;
-}
-.productCheck .btn-upload {
-	border-radius:7px;
-	text-transform:uppercase;
-	background:#000;
-	height:32px;
-	line-height:32px;
-	padding:0 15px;
-	color:#FFF;
-	cursor:pointer;
-    transition: all 0.2s ease 0s;
-	margin-right:-15px;
-}
-.productCheck .btn-upload:hover {
-	background:#ADADAD;
-}
-.productCheck input + label:hover:before {
-	border:2px solid #ADADAD;
-}
-.productCheck input + label:before {
-	content: '';
-    background: none repeat scroll 0 0 #fff;
-    border: 2px solid #000;
-    border-radius: 7px;
-    cursor: pointer;
-    height: 32px;
-    width: 32px;
-    transition: all 0.2s ease 0s;
-	display:block;
-	position:absolute;
-	margin-left:-50px;
-	font-family: 'Glyphicons Halflings';
-}
-.productCheck input:checked + label,
-.productCheck input:checked + label:hover {
-    background:#ff2957;
-}
-.productCheck input:checked + label:before {
-    border: 2px solid #ff2957;
-	content: "\e013";
-	color:#ff2957;
-	line-height:28px;
-	font-weight:normal;
-	font-size:18px;
-}
+
 @media (min-width: 499px) and (max-width: 991px) {
-	.productRow .col-md-3 {
-		width:50%;
-		float:left;
-	}
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
-	.productCheck .btn-upload {
-		float:right;
-		margin-right:0;
-	}
 }

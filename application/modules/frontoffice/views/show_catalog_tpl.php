@@ -1,3 +1,34 @@
+<!-- Page Content -->
+<div class="container mainContainer" role="main">
+	<div class="row">
+		<div class="brandDetailsBlock row-same-height row-full-height">
+			<div class="brandInfos col-xs-height col-full-height">
+				<div class="brandLogo"><img src="<?= base_url() ?>assets/frontoffice/img/temp/logo-angels.jpg" width="600" height="147" alt="Angels never die"></div>
+				<div class="brandAbout"></div>
+				<div class="brandLogistics"></div>
+				<div class="brandContact"></div>
+			</div>
+			<div class="brandImage col-xs-height col-full-height">
+				<img src="img/temp/banner-brand.jpg" width="1155" height="674" alt="Angels never die" class="img-responsive">
+				<div class="clearfix"></div>
+				<div class="col-md-3">ss</div>
+				<div class="col-md-3">ss</div>
+				<div class="col-md-3">ss</div>
+				<div class="col-md-3">ss</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2 col-md-push-5">
+			<div class="progress agentProgress">
+				<div style="width: 100%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-striped active"><span class="sr-only">60% Complete</span></div>
+			</div>
+		</div>
+		<div class="loadingBarLabel text-center">chargement en cours ...</div>
+	</div>
+</div>
+
 <!-- content homepage -->
 <div class="container mainContainer" role="main">
 	<div role="alert" class="alert alert-agent">
