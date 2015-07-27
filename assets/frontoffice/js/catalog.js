@@ -1,14 +1,25 @@
 $(document).ready(function() {
-  //init the favorite click icon
-  $('a.addToFavorites').click( function(event) {
-    if ( $(this).hasClass('active') ) {
-      // remove maybe - donno
-    } else {
-      var catalog_id = $(this).attr('data-catalog');
-      $(this).addClass('active');
-      flyImageToFavs(catalog_id);
-    }
-  });
+	//init the favorite click icon
+	$('a.addToFavorites').click( function(event) {
+		if ( $(this).hasClass('active') ) {
+			// remove maybe - donno
+		} else {
+			var catalog_id = $(this).attr('data-catalog');
+			$(this).addClass('active');
+			flyImageToFavs(catalog_id);
+		}
+	});
+  
+	// init the tooltip for products
+	$('.productColumn').tooltipster({
+		contentAsHTML: true,
+		touchDevices: true,
+		trigger: 'click',
+		theme: 'tooltipster-light',
+		position: 'bottom',
+		offsetY: -100,
+		content: $('<span><img src="my-image.png" /> <strong>This text is in bold case !</strong></span>')
+	});
   
 });
 
@@ -41,3 +52,15 @@ function flyImageToFavs(catalog_id) {
       }
   });
 }
+
+/* change the view */
+$('.showMore').click(function() {
+	$('#productList').find('.col-md-4').removeClass('col-md-4').addClass('col-md-2');
+	$('.rowFilter').find('.active').removeClass('active');
+	$(this).addClass('active');
+});
+$('.showLess').click(function() {
+	$('#productList').find('.col-md-2').removeClass('col-md-2').addClass('col-md-4');
+	$('.rowFilter').find('.active').removeClass('active');
+	$(this).addClass('active');
+});

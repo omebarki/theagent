@@ -22,6 +22,10 @@ a {
 	width:100%;
 }
 
+b, strong {
+	font-weight:bold;
+}
+
 @media (min-width: 1400px) {
 	.container {
 		width: 98%;
