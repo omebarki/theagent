@@ -36,6 +36,7 @@
 
 .cl{clear:left}
 .cr{clear:right}
+.cb{clear:both}
 
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }
@@ -284,7 +285,7 @@ i.upArrow {
 	transition: all 0.6s ease;
 }
 #loveBrandList.active {
-	top:80px;
+	top:70px;
 	opacity:1;
 }
 #loveBrandList .brandColumn {

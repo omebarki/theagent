@@ -68,7 +68,6 @@ b, strong {
 /* form elements */
 .form-control {
 	border-radius:0;
-	border:1px solid #FFF;
 }
 .form-control:focus {
 	border:1px solid #848383;
@@ -88,6 +87,7 @@ b, strong {
 .btn {
 	transition: all 0.2s ease;
 	border-radius:5px;
+	text-transform:uppercase;
 }
 .btn-xs, .btn-group-xs > .btn {
 	padding:2px 5px;

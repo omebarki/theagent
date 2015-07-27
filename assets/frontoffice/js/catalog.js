@@ -9,17 +9,78 @@ $(document).ready(function() {
 			flyImageToFavs(catalog_id);
 		}
 	});
-  
+
 	// init the tooltip for products
-	$('.productColumn').tooltipster({
-		contentAsHTML: true,
-		touchDevices: true,
-		trigger: 'click',
-		theme: 'tooltipster-light',
-		position: 'bottom',
-		offsetY: -100,
-		content: $('<span><img src="my-image.png" /> <strong>This text is in bold case !</strong></span>')
+	$('.productColumn').each(function() { // Notice the .each() loop, discussed below
+		var elem = $(this);
+		$(this).qtip({
+			content: {
+				text: 'My common piece of text here',
+				title: {
+					button: true
+				}
+			},
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: {
+				event: 'click'
+			},
+			position: {
+				my: 'left top',
+				at: 'left top',
+				target: $(this),
+				viewport: $(window),
+				adjust: {
+					 method: 'flipinvert'
+				}
+			},
+			style: {
+				width: 500,
+				height:400,
+				tip: true,
+				tip: {
+					corner: 'left center'
+				},
+				classes: 'qtip-light',
+			}
+		});
 	});
+	
+	// init the tooltip for sale form
+	$('#addFullSale').qtip({
+		content: {
+			text: '<span><img src="my-image.png" /> <strong>This text is in bold case !</strong></span>',
+			title: {
+				button: true
+			}
+		},
+		show: {
+			event: 'click'
+		},
+		hide: {
+			event: 'click'
+		},
+		style: 'qtip-light'
+	});
+	
+	/*$('.productColumn').click(function() {
+		var elem = $(this);
+		if ( $("#productDetails").hasClass('active') ) {
+			$("#productDetails").removeClass('active');
+			$("#detailsArrow").removeClass('active');
+			setTimeout(function(){
+				showProductColumn(elem);
+			}, 300);
+		} else {
+			showProductColumn(elem);
+		}
+	});
+	
+	$('#planSalesButton').click(function(){
+		$('#planSalesForm').slideDown();
+	});*/
   
 });
 
@@ -55,12 +116,31 @@ function flyImageToFavs(catalog_id) {
 
 /* change the view */
 $('.showMore').click(function() {
-	$('#productList').find('.col-md-4').removeClass('col-md-4').addClass('col-md-2');
+	$('#productList').find('.col-lg-3').removeClass('col-lg-3 col-md-4').addClass('col-lg-2 col-md-3');
 	$('.rowFilter').find('.active').removeClass('active');
 	$(this).addClass('active');
 });
 $('.showLess').click(function() {
-	$('#productList').find('.col-md-2').removeClass('col-md-2').addClass('col-md-4');
+	$('#productList').find('.col-lg-2').removeClass('col-lg-2 col-md-3').addClass('col-lg-3 col-md-4');
 	$('.rowFilter').find('.active').removeClass('active');
 	$(this).addClass('active');
 });
+
+/*
+function showProductColumn(elem) {
+	$("#productDetails").show(0);
+	$("#productDetails").position({
+		my: "left+20 top+50",
+		at: "left top",
+		of: elem
+	});
+	$("#productDetails").addClass('active');
+	
+	$("#detailsArrow").show(0);
+	$("#detailsArrow").position({
+		my: "center top+50",
+		at: "center top",
+		of: elem
+	});
+	$("#detailsArrow").addClass('active');
+}*/
