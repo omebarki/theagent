@@ -77,6 +77,9 @@ window.onload = function () {
   $('.datepicker').datepicker({
     orientation:"auto",
   });
+	$('.input-group.date').datepicker({
+		orientation:"bottom",
+	});
   $('.lovedBrands').owlCarousel(owlConf);
 };
 
