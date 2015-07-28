@@ -26,6 +26,11 @@ b, strong {
 	font-weight:bold;
 }
 
+.popover {
+	max-width: none;
+	font-family:'Century gothic';
+}
+
 @media (min-width: 1400px) {
 	.container {
 		width: 98%;

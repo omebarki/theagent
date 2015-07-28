@@ -81,6 +81,21 @@ h4 {
 	color:#ff2957 !important;
 }
 
+a.close {
+	position:absolute;
+	z-index:100;
+	background:#FFF;
+	font-size:2em;
+	color:#000;
+	top:10px;
+	right:10px;
+	opacity:1;
+	cursor:pointer;
+}
+a.close:hover {
+	color:#CCC;
+}
+
 /* Top navigation */
 .navbar-fixed-top {
 	height:70px;

@@ -41,6 +41,8 @@
 		</div>
 		<a class="btn btn-primary fr" id="addFullSale">Add the sales to my selection</a>
 		<div id="addSuccess" class="fr">
+			<i class="upArrow"></i>
+			<a class="close">X</a>
 			<p class="successMessage tac">
 				<span>THANK YOU!</span><br /><br />
 				The sales have been added to your selection
@@ -79,28 +81,30 @@
 		</div>
 	</div>
 	
-	<div id="detailsArrow"><i class="upArrow"></i></div>
 	<div id="productDetails">
-		<div class="col-sm-5 imageColumn">
-			<div><img src="<?= base_url() ?>assets/frontoffice/img/temp/prod-grand.jpg" /></div>
-			<ul class="productThumbs">
-				<li class="active"><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_1.jpg" /></li>
-				<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_2.jpg" /></li>
-				<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_3.jpg" /></li>
-			</ul>
-		</div>
-		<div class="col-sm-7 detailsColumn">
-			<p class="productName">Sarouel <span class="price">THYME</span></p>
-			<span class="brand">Angels Never Die</span>
-			<div class="productDesc">Sarouel en coton. Fermeture par zip et bouton à l'avant. Passants ceinture. Deux poches à l'avant. Pattes de boutonnage au dos. Finitions revers. Longueur : 78 cm. Info taille: le mannequin porte ce produit en taille T36. Le mannequin mesure 1m70, mensurations 88cm / 60cm / 88 cm.<br /><br />
-Information taille : Fruitrouge vous indique les équivalences des tailles des marques en taille française (36/38/40). Il peut néanmoins y avoir des nuances pour certaines marques, nous vous invitons à consulter le guide de tailles ci-dessous pour plus dinformations.
+		<div class="prodWrapper">
+			<a class="close">X</a>
+			<div class="col-sm-5 imageColumn">
+				<div><img src="<?= base_url() ?>assets/frontoffice/img/temp/prod-grand.jpg" /></div>
+				<ul class="productThumbs">
+					<li class="active"><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_1.jpg" /></li>
+					<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_2.jpg" /></li>
+					<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_3.jpg" /></li>
+				</ul>
 			</div>
-			<p><?= lang("wholesale_price") ?>:  <strong>12,50 €</strong></p>
-			<p><?= lang("recommanded_retail_price") ?>:  <strong>36,00 €</strong></p>
-			<p><?= lang("stock") ?>: <strong>50 pieces</strong></p>
-			<div class="productButtons">
-				<a class="btn btn-primary">Add the sales to my selection</a>
-				<a class="btn btn-default btn-default-black">Download the product</a>
+			<div class="col-sm-7 detailsColumn">
+				<p class="productName">Sarouel <span class="price">THYME</span></p>
+				<span class="brand">Angels Never Die</span>
+				<div class="productDesc">Sarouel en coton. Fermeture par zip et bouton à l'avant. Passants ceinture. Deux poches à l'avant. Pattes de boutonnage au dos. Finitions revers. Longueur : 78 cm. Info taille: le mannequin porte ce produit en taille T36. Le mannequin mesure 1m70, mensurations 88cm / 60cm / 88 cm.<br /><br />
+	Information taille : Fruitrouge vous indique les équivalences des tailles des marques en taille française (36/38/40). Il peut néanmoins y avoir des nuances pour certaines marques, nous vous invitons à consulter le guide de tailles ci-dessous pour plus dinformations.
+				</div>
+				<p><?= lang("wholesale_price") ?>:  <strong>12,50 €</strong></p>
+				<p><?= lang("recommanded_retail_price") ?>:  <strong>36,00 €</strong></p>
+				<p><?= lang("stock") ?>: <strong>50 pieces</strong></p>
+				<div class="productButtons">
+					<a class="btn btn-primary">Add the sales to my selection</a>
+					<a class="btn btn-default btn-default-black">Download the product</a>
+				</div>
 			</div>
 		</div>
 	</div>
