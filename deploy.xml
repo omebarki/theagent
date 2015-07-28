@@ -1,0 +1,14 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="The Agent Deploy" >
+	<target name ="deploy" >
+		<fail unless="version" message="La variable 'version' est vide"/>
+		<fail unless="deploy.username" message="La variable 'deploy.username' est vide"/>
+		<fail unless="deploy.keyfile" message="La variable 'deploy.keyfile' est vide"/>
+		<fail unless="deploy.host.name" message="La variable 'deploy.host.name' est vide"/>
+		<fail unless="deploy.host.archives.folder" message="La variable 'deploy.host.archives.folder' est vide"/>
+
+		<scp file="${basedir}/release-${version}.tar.gz" todir="${deploy.username}@${deploy.host.name}:${deploy.host.archives.folder}" keyfile="${deploy.keyfile}"/>
+		
+	</target>
+</project>
