@@ -19,7 +19,7 @@
 		 	username="${deploy.username}" 
 		 	keyfile="${deploy.keyfile}"
 		 	trust="Yes"
-		 	command="touch somefile"/>
+		 	command="tar -C ${deploy.host.uncompress.folder} -xzf ${deploy.host.archives.folder}/${deploy.file.name}"/>
 		
 	</target>
 </project>
