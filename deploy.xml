@@ -23,7 +23,7 @@
 		 	username="${deploy.username}" 
 		 	keyfile="${deploy.keyfile}"
 		 	trust="Yes"
-		 	command="tar -p -C ${deploy.host.uncompress.folder} -xzf ${deploy.host.archives.folder}/${deploy.file.name}"/>
+		 	command="rm -rf ${deploy.host.uncompress.folder}/${version}; tar -p -C ${deploy.host.uncompress.folder} -xzf ${deploy.host.archives.folder}/${deploy.file.name}"/>
 
 		<!-- créer le lien symbolique -->
 		<sshexec host="${deploy.host.name}" 
