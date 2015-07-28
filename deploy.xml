@@ -1,5 +1,5 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project name="The Agent Deploy" >
 	<target name ="deploy" >
 		<fail unless="version" message="La variable 'version' est vide"/>
