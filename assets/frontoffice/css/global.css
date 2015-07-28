@@ -219,37 +219,35 @@ i.upArrow {
 	opacity: 1;
 }
 
-.navbar-fixed-top ul.dropdown-menu > li > a {
-	font-weight:bold;
-	color:#666 !important;
-	padding:8px 15px !important;
-}
 .navbar-fixed-top ul.dropdown-menu .divider {
-	background:#CCC !important;
+	background:#868686 !important;
 }
 
-.navbar-fixed-top .buttonHolder a.btn {
-	border-radius:0;
-	width:120px;
-	font-size:13px !important;
-	float:left;
-	padding:8px 0 !important;
-	clear:none;
+.navbar-fixed-top ul.dropdown-menu .nav {
+	text-align:center;
+	border:none;
+	margin-top:2px;
 }
-.navbar-fixed-top .buttonHolder a.btn-primary {
-	color:#FFF !important;
-	margin-left:15px;
-}
-.navbar-fixed-top .buttonHolder a.btn-primary.seeAll {
-	width:180px;
-	border-radius:5px;
+.navbar-fixed-top ul.dropdown-menu .nav > li {
 	float:none;
-	margin:auto;
+	display:inline-block;
 }
-.navbar-fixed-top .buttonHolder a.btn-primary:hover {
-	color: #FF2D58 !important;
-	background-color: #ffdae0 !important;
-	border-color: #ffdae0 !important;
+.navbar-fixed-top ul.dropdown-menu .nav-tabs > li > a {
+	border:1px solid #868686;
+	color:#868686;
+	background:#FFF;
+	border-radius:0;
+	padding:5px 10px;
+	width:110px;
+	text-align:center;
+}
+.navbar-fixed-top ul.dropdown-menu .nav-tabs > li > a:hover, 
+.navbar-fixed-top ul.dropdown-menu .nav-tabs > li.active > a, 
+.navbar-fixed-top ul.dropdown-menu .nav-tabs > li.active > a:focus, 
+.navbar-fixed-top ul.dropdown-menu .nav-tabs > li.active > a:hover {
+    background-color: #ff2d58;
+    border-color: #ff2d58;
+    color: #fff;
 }
 
 .navbar-fixed-top li.product {
@@ -276,7 +274,7 @@ i.upArrow {
 }
 .navbar-fixed-top li.product a.delete {
 	position:absolute;
-	right:0;
+	right:15px;
 	bottom:0;
 	cursor:pointer;
 }
@@ -285,6 +283,23 @@ i.upArrow {
 }
 .navbar-fixed-top li.product a.delete:hover i {
 	color:#ff2957;
+}
+
+.navbar-fixed-top li.notification {
+	padding:0 15px;
+	position:relative;
+	font-size:0.8em;
+	line-height:1.1em;
+	color:#000;
+}
+.navbar-fixed-top li.notification img {
+	float:left;
+	margin-right:10px;
+}
+.navbar-fixed-top li.notification span {
+	color:#999;
+	padding-top:3px;
+	display:block;
 }
 
 #loveBrandList {

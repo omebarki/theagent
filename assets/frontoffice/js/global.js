@@ -81,6 +81,17 @@ window.onload = function () {
 		orientation:"bottom",
 	});
   $('.lovedBrands').owlCarousel(owlConf);
+  
+$('li.dropdown.selections a').on('click', function (event) {
+    $(this).parent().toggleClass("open");
+});
+
+$('body').on('click', function (e) {
+    if (!$('li.dropdown.selections').is(e.target) && $('li.dropdown.selections').has(e.target).length === 0 && $('.open').has(e.target).length === 0) {
+        $('li.dropdown.selections').removeClass('open');
+    }
+});
+  
 };
 
 $(document).ready(function() {

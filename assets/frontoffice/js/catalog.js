@@ -12,6 +12,11 @@ $(document).ready(function() {
 
 	$('.productColumn').click(function() {
 		var elem = $(this);
+		// we close all open windows
+		if ( $("#addSuccess").hasClass('active') ) {
+			$("#addSuccess").hide(200);
+			$("#addSuccess").removeClass('active');
+		}
 		if ( $("#productDetails").hasClass('active') ) {
 			$("#productDetails").removeClass('active');
 			$("#detailsArrow").remove();
@@ -29,6 +34,11 @@ $(document).ready(function() {
 	});
 	
 	$('#addFullSale').click(function() {
+		// we close all open windows
+		if ( $("#productDetails").hasClass('active') ) {
+			$("#productDetails").removeClass('active');
+			$("#detailsArrow").remove();
+		}
 		$("#addSuccess").show(0);
 		$("#addSuccess").position({
 			my: "right top+20",
