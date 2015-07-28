@@ -46,6 +46,9 @@ form.homeLogin .btn {
 	float:right;
 	margin-top:10px;
 }
+.form-control {
+	border:1px solid #FFF;
+}
 
 .homeMainBlock {
 	padding:15px;

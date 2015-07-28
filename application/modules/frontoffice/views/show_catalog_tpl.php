@@ -2,21 +2,132 @@
 <div class="container mainContainer" role="main">
 	<div class="row">
 		<div class="brandDetailsBlock row-same-height row-full-height">
+			<div class="brandImage topBrandImage" style="background:url('<?= base_url() ?>assets/frontoffice/img/temp/banner-brand.jpg') no-repeat center center scroll;"></div>
 			<div class="brandInfos col-xs-height col-full-height">
 				<div class="brandLogo"><img src="<?= base_url() ?>assets/frontoffice/img/temp/logo-angels.jpg" width="600" height="147" alt="Angels never die"></div>
-				<div class="brandAbout"></div>
-				<div class="brandLogistics"></div>
-				<div class="brandContact"></div>
+				<div class="brandAbout">
+					<h4>About the brand</h4>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+				</div>
+				<div class="brandLogistics">
+					<h4>About the logistic</h4>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+				</div>
+				<div class="buttonHolder clearfix">
+					<div class="col-xs-6 tac"><a class="btn btn-default btn-default-black">Marketing material</a></div>
+					<div class="col-xs-6 tac"><a class="btn btn-default btn-default-black">Download the pack</a></div>
+				</div>
+				<div class="brandContact">
+					<h4>Sales contact</h4>
+					<div class="dTable">
+						<p class="dTableCell"><img src="<?= base_url() ?>assets/frontoffice/img/temp/business-man.jpg" width="100" height="100" alt=""></p>
+						<p class="dTableCell">
+							<strong>Bertrand Thoral</strong></br>
+							Phone: +33 1 45 677 897</br>
+							Mail: bertrand@theagent.com
+						</p>
+					</div>
+				</div>
 			</div>
-			<div class="brandImage col-xs-height col-full-height">
-				<img src="img/temp/banner-brand.jpg" width="1155" height="674" alt="Angels never die" class="img-responsive">
-				<div class="clearfix"></div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
-				<div class="col-md-3">ss</div>
+			<div class="brandImage col-xs-height col-full-height" style="background:url('<?= base_url() ?>assets/frontoffice/img/temp/banner-brand.jpg') no-repeat center center scroll;">
 			</div>
 		</div>
+	</div>
+	
+	<div class="row filterBlock">
+		<div class="rowFilter fr clearfix">
+			<a class="showLess"></a>
+			<a class="showMore active"></a>
+		</div>
+		<a class="btn btn-primary fr" id="addFullSale">Add the sales to my selection</a>
+		<div id="addSuccess" class="fr">
+			<i class="upArrow"></i>
+			<a class="close">X</a>
+			<p class="successMessage tac">
+				<span>THANK YOU!</span><br /><br />
+				The sales have been added to your selection
+			</p>
+			<div class="row">
+				<div class="col-xs-6 saleInfoCol"><a class="btn btn-default">Continue my shopping</a></div>
+				<div class="col-xs-6 saleInfoCol"><a class="btn btn-primary" id="planSalesButton">Plan the sales</a></div>
+				<div class="cb"></div>
+				<div id="planSalesForm" style="display:none;">
+					<div class="col-md-6 col-md-push-3 separator"></div>
+					<div class="cb"></div>
+					<div class="col-xs-6 saleInfoCol">
+						Sales starting date
+						<div class="input-group date">
+						  <input type="text" class="form-control" id="datetimepicker1"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+						</div>
+					</div>
+					<div class="col-xs-6 saleInfoCol">
+						Sales finishing date
+						<div class="input-group date">
+						  <input type="text" class="form-control" id="datetimepicker2"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+						</div>
+					</div>
+					<div class="col-xs-6 saleInfoCol">
+						Our sales reference
+						<input type="text" placeholder="ANGELS NEVER DIE / 3605" class="form-control haveMargin" readonly="readonly" />
+					</div>
+					<div class="col-xs-6 saleInfoCol">
+						Your sales reference
+						<input type="text" class="form-control haveMargin" />
+					</div>
+					<div class="cl cr"></div>
+					<div class="col-xs-6 col-md-push-6 saleInfoCol"><a class="btn btn-primary">Send your request</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="productDetails">
+		<div class="prodWrapper">
+			<a class="close">X</a>
+			<div class="col-sm-5 imageColumn">
+				<div><img src="<?= base_url() ?>assets/frontoffice/img/temp/prod-grand.jpg" /></div>
+				<ul class="productThumbs">
+					<li class="active"><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_1.jpg" /></li>
+					<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_2.jpg" /></li>
+					<li><img src="<?= base_url() ?>assets/frontoffice/img/temp/small_3.jpg" /></li>
+				</ul>
+			</div>
+			<div class="col-sm-7 detailsColumn">
+				<p class="productName">Sarouel <span class="price">THYME</span></p>
+				<span class="brand">Angels Never Die</span>
+				<div class="productDesc">Sarouel en coton. Fermeture par zip et bouton à l'avant. Passants ceinture. Deux poches à l'avant. Pattes de boutonnage au dos. Finitions revers. Longueur : 78 cm. Info taille: le mannequin porte ce produit en taille T36. Le mannequin mesure 1m70, mensurations 88cm / 60cm / 88 cm.<br /><br />
+	Information taille : Fruitrouge vous indique les équivalences des tailles des marques en taille française (36/38/40). Il peut néanmoins y avoir des nuances pour certaines marques, nous vous invitons à consulter le guide de tailles ci-dessous pour plus dinformations.
+				</div>
+				<p><?= lang("wholesale_price") ?>:  <strong>12,50 €</strong></p>
+				<p><?= lang("recommanded_retail_price") ?>:  <strong>36,00 €</strong></p>
+				<p><?= lang("stock") ?>: <strong>50 pieces</strong></p>
+				<div class="productButtons">
+					<a class="btn btn-primary">Add the sales to my selection</a>
+					<a class="btn btn-default btn-default-black">Download the product</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row" id="productList">
+	<?php if( ! empty($catalog_products)): ?>
+	<?php foreach($catalog_products as $index => $product): ?>
+		<div class="col-lg-2 col-md-3 col-xs-6">
+			<div class="productColumn">
+				<img src="<?= base_url() ?>assets/frontoffice/img/temp/prod1.jpg" width="248" height="248" alt="Product name" class="img-responsive" />
+				<div class="productInfo clearfix">
+					<p class="productName">SAC JAMILY MARRON</p>
+					<p>Sac en cuir grainé pour femme.</p>
+					<div class="clearfix"></div>
+					<p><?= lang("wholesale_price") ?>:  <strong class="price">12,50 €</strong></p>
+					<p><?= lang("retail_price") ?>:  <strong class="price">36,00 €</strong></p>
+					<p><?= lang("Stock_price") ?>: <strong class="price">50 pieces</strong></p>
+					<p><?= lang("size_range") ?>: <strong class="price">one size</strong></p>
+				</div>
+			</div>
+		</div>
+	<?php endforeach ?>
+	<?php endif ?>
 	</div>
 	
 	<div class="row">
@@ -28,99 +139,3 @@
 		<div class="loadingBarLabel text-center">chargement en cours ...</div>
 	</div>
 </div>
-
-<!-- content homepage -->
-<div class="container mainContainer" role="main">
-	<div role="alert" class="alert alert-agent">
-    	<?= lang("sales") ?>: <strong><?= $catalog_details->saleName ?></strong> <span>|</span> <?= lang("nb_products") ?>: <?= $catalog_details->nbPF ?> <span>|</span> <?= lang("nb_skus") ?>: <?= $catalog_details->nbSku ?> <span>|</span> <?= lang("stock") ?>: <?= $catalog_details->totalStock ?>
-    </div>
-	<div class="row">
-		<div class="col-md-3 text-center brandInfoCol">
-			<img src="<?= base_url() ?>assets/frontoffice/img/temp/abaco-logo.jpg" width="240" height="123" alt="Abaco"><br />
-			<a class="btn btn-lg btn-primary"><?= lang("add_to_wishlist") ?></a>
-			<a class="btn btn-lg btn-default btn-default-black"><?= lang("add_to_wishlist") ?></a>
-			<a class="btn btn-lg btn-default btn-default-black"><?= lang("plan_the_sales") ?></a>
-			<a class="btn btn-lg btn-default btn-default-black"><?= lang("see_the_stock") ?></a>
-			<a class="btn btn-lg btn-default btn-default-black"><?= lang("marketing_material") ?></a>
-			<a class="btn btn-lg btn-default btn-default-black"><?= lang("upload_the_pack") ?></a>
-		</div>
-		<div class="col-md-9"><img src="<?= base_url() ?>assets/frontoffice/img/temp/bigbanner-1.jpg" width="893" height="388" class="img-responsive"></div>
-	</div>
-	<div class="row">
-		<div class="col-md-3 text-center">
-			<h3><?= lang("sales_contact") ?></h3>
-			<p><img src="<?= base_url() ?>assets/frontoffice/img/temp/business-man.jpg" width="150" height="150" alt="Business Man"></p>
-			<p>
-			<strong><?= $catalog_details->firstname.' '.$catalog_details->lastname ?></strong></br>
-			<?= lang("phone") ?>: <?= $catalog_details->phone1 ?></br>
-			<?= lang("email") ?>: <?= $catalog_details->email ?>
-			</p>
-		</div>
-		<div class="col-md-9">
-			<div class="col-md-6">
-				<h3><?= lang("about_the_brand") ?></h3>
-				<p id="viewdetails_1" class="viewdetails collapse"><?= $catalog_details->brandDescription ?></p>
-				<p><a data-target="#viewdetails_1" data-toggle="collapse" class="btn btn_viewdetails"><?= lang("view_details") ?> »</a></p>
-			</div>
-			<div class="col-md-6">
-				<h3><?= lang("logistic_information") ?></h3>
-				<p id="viewdetails_2" class="viewdetails collapse">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p><a data-target="#viewdetails_2" data-toggle="collapse" class="btn btn_viewdetails"><?= lang("view_details") ?> »</a></p>
-			</div>
-		</div>
-	</div>
-	<div class="voffset4"></div>
-	<div class="filterbyForm clearfix">
-		<form class="navbar-form navbar-right">
-			<div class="form-group">
-				<label class="control-label"><?= lang("filter") ?></label>
-				<select class="selectpicker" data-width="auto" data-style="agentSelect">
-					<option value=""><?= lang("looking_for") ?></option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label class="control-label"><?= lang("sort") ?></label>
-				<select class="selectpicker" data-width="auto" data-style="agentSelect">
-					<option value=""><?= lang("all") ?></option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</div>
-		</form>
-	</div>
-	<?php if( ! empty($catalog_products)): ?>
-	<?php foreach($catalog_products as $index => $product): ?>
-	<?php if($index%4 == 0): ?>
-	<div class="row productRow">
-	<?php endif ?>	
-		<div class="col-md-3">
-			<div class="productColumn">
-				<div class="productImage"><img src="<?= base_url() ?>assets/frontoffice/img/temp/prod1.jpg" width="248" height="248" alt="Product name" class="img-responsive" /></div>
-				<div class="productInfo clearfix">
-					<span class="productName">SAC JAMILY MARRON</span><br/>
-					Sac en cuir grainé pour femme.
-					<div class="voffset<?= $index ?>"></div>
-					<?= lang("wholesale_price") ?>:  <strong>12,50 €</strong><br/>
-					<?= lang("retail_price") ?>:  <strong>36,00 €</strong> <br/>
-					<?= lang("Stock_price") ?>: <strong>50 pieces</strong><br/>
-					<?= lang("size_range") ?>: <strong>one size</strong>
-				</div>
-			</div>
-			<div class="productCheck">
-				<input type="checkbox" id="productID_<?= $index ?>" />
-				<label for="productID_<?= $index ?>" class="btn-upload"><?= lang("upload_product") ?></label>
-			</div>
-		</div>
-	<?php if($index%4 == 0): ?>
-	</div>
-	<?php endif ?>
-	<?php endforeach ?>
-	<?php endif ?>
-</div>
-<!-- content homepage end -->

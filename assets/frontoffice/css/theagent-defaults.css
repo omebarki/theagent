@@ -22,6 +22,15 @@ a {
 	width:100%;
 }
 
+b, strong {
+	font-weight:bold;
+}
+
+.popover {
+	max-width: none;
+	font-family:'Century gothic';
+}
+
 @media (min-width: 1400px) {
 	.container {
 		width: 98%;
@@ -64,7 +73,6 @@ a {
 /* form elements */
 .form-control {
 	border-radius:0;
-	border:1px solid #FFF;
 }
 .form-control:focus {
 	border:1px solid #848383;
@@ -84,6 +92,7 @@ a {
 .btn {
 	transition: all 0.2s ease;
 	border-radius:5px;
+	text-transform:uppercase;
 }
 .btn-xs, .btn-group-xs > .btn {
 	padding:2px 5px;

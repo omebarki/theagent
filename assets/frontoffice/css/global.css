@@ -36,6 +36,7 @@
 
 .cl{clear:left}
 .cr{clear:right}
+.cb{clear:both}
 
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }
@@ -48,6 +49,29 @@
 .voffset8 { margin-top: 100px; }
 .voffset9 { margin-top: 150px; }
 
+h4 {
+	margin:10px 0;
+	font-size:1em;
+	font-weight:bold;
+}
+
+.btn-default-black {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+.dTable {
+	display:table;
+	height:100%;
+}
+.dTableRow {
+	display: table-row;
+}
+.dTableCell {
+	display:table-cell;
+}
+
 .mainContainer {
 	margin-top:20px;
 	margin-bottom:20px;
@@ -55,6 +79,21 @@
 
 .price {
 	color:#ff2957 !important;
+}
+
+a.close {
+	position:absolute;
+	z-index:100;
+	background:#FFF;
+	font-size:2em;
+	color:#000;
+	top:10px;
+	right:10px;
+	opacity:1;
+	cursor:pointer;
+}
+a.close:hover {
+	color:#CCC;
 }
 
 /* Top navigation */
@@ -261,7 +300,7 @@ i.upArrow {
 	transition: all 0.6s ease;
 }
 #loveBrandList.active {
-	top:80px;
+	top:70px;
 	opacity:1;
 }
 #loveBrandList .brandColumn {

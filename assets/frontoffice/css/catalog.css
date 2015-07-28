@@ -1,43 +1,280 @@
 /*  catalog page CSS file for The Agent */
-
+.brandDetailsBlock {
+	border-bottom:4px solid #2B2A2A;
+	padding-bottom:10px;
+	font-size:0.8em;
+	line-height:1.1em;
+}
 .brandDetailsBlock .brandInfos {
-	width:34%;
+	width:50%;
 	vertical-align:top;
+	padding-right:20px;
 }
 .brandDetailsBlock .brandImage {
-	width:66%;
-	vertical-align:top;
+	width:50%;
+	vertical-align:bottom;
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
+}
+.topBrandImage {
+	margin-bottom:20px;
+	height:250px;
+	display:none;
 }
 
 .brandDetailsBlock .brandLogo {
-	height:10%;
 }
 	.brandDetailsBlock .brandLogo img {
-		height:100%;
+		max-height:70px;
 		width:auto;
 	}
 .brandDetailsBlock .brandAbout {
-	height:40%;
+	padding-bottom:10px;
 }
 .brandDetailsBlock .brandLogistics {
-	height:30%;
+	padding-bottom:10px;
 }
 .brandDetailsBlock .brandContact {
-	height:20%;
+	vertical-align:bottom;
+}
+	.brandDetailsBlock .brandContact .dTable .dTableCell {
+		vertical-align:bottom;
+	}
+	.brandDetailsBlock .brandContact p img {
+		margin-right:20px;
+		max-height:100%;
+		width:auto;
+	}
+
+.brandImage .buttonHolder {
+	clear:both;
+	padding:20px 0 0 0;
+	background:#FFF;
+}
+	.brandImage .btn {
+		width:200px;
+		font-size:1em;
+	}
+
+.filterBlock {
+	padding:10px 0;
+}
+.rowFilter {
+	border-left:1px solid #000;
+	padding:5px 0;
+	margin:5px 0 0 10px
+}
+.showLess, .showMore {
+	display:block;
+	float:right;
+	height:12px;
+	cursor: pointer;
+	margin-left:10px;
+}
+.showLess {
+	width:19px;
+	background:url('../img/filter-display-less.png') top left no-repeat;
+}
+.showMore {
+	width:40px;
+	background:url('../img/filter-display-more.png') top left no-repeat;
+}
+.showMore.active, .showMore:hover,
+.showLess.active, .showLess:hover {
+	background-position:bottom;
 }
 
 
-@media (max-width: 991px) {
+.productColumn {
+	position:relative;
+	font-size:0.8em;
+	cursor:pointer;
+	margin-bottom:20px;
+	transition: all 0.2s ease;
+}
+.productColumn:hover {
+	box-shadow:0 0 8px #EEE;
+}
+.productColumn p {
+	margin-bottom:3px;
+}
+.productColumn .productInfo {
+	position:absolute;
+	width:100%;
+	padding:10px;
+	bottom:0;
+	background:rgba(209, 208, 208, 0.7);
+}
+
+#productDetails {
+	position:absolute;
+	z-index:10;
+	width:600px;
+	border:1px solid #CCC;
+	background:#FFF;
+	border-radius:5px;
+	padding:10px;
+	transition: all 0.2s ease;
+	display:none;
+	opacity:0;
+	left:-9999px;
+}
+#productDetails.active {
+	opacity:1;
+}
+#detailsArrow {
+	position:absolute;
+	z-index:15;
+	transition: all 0.2s ease;
+}
+#productDetails #detailsArrow i.upArrow::after {
+	margin-top:-9px;
+}
+#detailsArrow.top.left {
+	left:50px;
+	top:0;
+}
+#detailsArrow.top.right {
+	right:50px;
+	top:0;
+}
+#detailsArrow.bottom.left {
+	left:50px;
+	bottom:0;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#detailsArrow.bottom.right {
+	right:50px;
+	bottom:0;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+.imageColumn {
+	text-align:center;
+}
+.productThumbs {
+	text-align:center;
+	list-style:none;
+}
+.productThumbs li {
+	display:inline-block;
+	border:1px solid #ccc;
+	cursor:pointer;
+	transition: all 0.2s ease;
+}
+.productThumbs li:hover,
+.productThumbs li.active {
+	border:1px solid #000;
+}
+.detailsColumn {
+	font-size:0.8em;
+}
+.productName {
+	font-weight:bold;
+}
+.detailsColumn .brand {
+	font-style:italic;
+	text-transform:uppercase;
+}
+.productDesc {
+	margin:20px 0;
+}
+.productButtons {
+	text-align:center;
+	padding:10px 0;
+}
+.productButtons a {
+	margin:5px 0;
+}
+
+#addSuccess {
+	width:500px;
+	font-size:0.8em;
+	position:absolute;
+	z-index:10;
+	border:1px solid #CCC;
+	background:#FFF;
+	border-radius:5px;
+	padding:10px;
+	transition: all 0.2s ease;
+	display:none;
+	opacity:0;
+}
+#addSuccess.active {
+	opacity:1;
+}
+#addSuccess i.upArrow::after {
+	margin-top:-9px;
+}
+#addSuccess p.successMessage {
+	font-size:1.5em;
+	margin:50px 0;
+	color:#666;
+}
+#addSuccess p.successMessage span {
+	font-size:2em;
+	font-weight:bold;
+}
+#addSuccess .separator {
+	margin:10px 0;
+	height:1px;
+	display:block;
+	background:#CCC;
+}
+#addSuccess .saleInfoCol {
+	margin:10px 0;
+}
+#addSuccess .saleInfoCol a {
+	width:100%;
+}
+#addSuccess .input-group, #addSuccess .haveMargin {
+	margin-top:5px;
 }
 
 @media (max-width: 499px) {
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+}
+
+@media (max-width: 991px) {
+	.rowFilter {display:none;}
+	.brandDetailsBlock .brandInfos {
+		width:100%;
+		display:block;
+	}
+	.brandDetailsBlock .brandImage {
+		width:100%;
+		display:block;
+	}
+	.topBrandImage {
+		display:block;
+	}
 }
 
 @media (min-width: 499px) and (max-width: 991px) {
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
+}
+
+@media (min-width: 1200px) {
+	.brandDetailsBlock .brandInfos {
+		width:34%;
+	}
+	.brandDetailsBlock .brandImage {
+		width:66%;
+	}
+}
+
+@media (max-width: 1399px) {
+	.brandDetailsBlock .buttonHolder a {
+		margin:5px 0;
+	}
 }

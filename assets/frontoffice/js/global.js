@@ -44,9 +44,8 @@ function toggleLoveBrands() {
 }
 
 $(window).resize(adjustModalMaxHeightAndPosition).trigger("resize");
-
+//-----------------------------CONFS---------------------------------
 window.onload = function () {
-  //-----------------------------CONFS---------------------------------
   owlConf = {
     margin: 15,
     responsiveClass: true,
@@ -73,15 +72,17 @@ window.onload = function () {
         items: 6
       }
     }
-  };
+  }
   dPickerConf = {
     orientation:"auto",
   };
-  //-------------------------------EXTENDS------------------------------
-
-  $('.selectpicker').selectpicker();
-  $('.datepicker').datepicker(dPickerConf);
-  $('.lovedBrands').owlCarousel(owlConf);
+    //-------------------------------EXTENDS------------------------------
+ $('.selectpicker').selectpicker();
+ $('.datepicker').datepicker(dPickerConf);
+ $('.input-group.date').datepicker({
+		orientation:"bottom",
+	});
+ $('.lovedBrands').owlCarousel(owlConf);
 };
 
 $(document).ready(function() {
