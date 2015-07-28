@@ -8,18 +8,29 @@
 		<fail unless="deploy.host.name" message="La variable 'deploy.host.name' est vide"/>
 		<fail unless="deploy.host.archives.folder" message="La variable 'deploy.host.archives.folder' est vide"/>
 		<fail unless="deploy.host.uncompress.folder" message="La variable 'deploy.host.archives.folder' est vide"/>
+		<fail unless="deploy.host.symlink" message="La variable 'deploy.host.symlink' est vide" />
 		<property name="deploy.file.name" value="release-${version}.tar.gz" />
+
+		<!-- déposer le'archive -->
 
 		<scp file="${basedir}/${deploy.file.name}" 
 			todir="${deploy.username}@${deploy.host.name}:${deploy.host.archives.folder}" 
 			keyfile="${deploy.keyfile}" 
 			trust="Yes" />
 
-		 <sshexec host="${deploy.host.name}" 
+		<!-- décompresser le'archive -->
+		<sshexec host="${deploy.host.name}" 
 		 	username="${deploy.username}" 
 		 	keyfile="${deploy.keyfile}"
 		 	trust="Yes"
 		 	command="tar -p -C ${deploy.host.uncompress.folder} -xzf ${deploy.host.archives.folder}/${deploy.file.name}"/>
+
+		<!-- créer le lien symbolique -->
+		<sshexec host="${deploy.host.name}" 
+		 	username="${deploy.username}" 
+		 	keyfile="${deploy.keyfile}"
+		 	trust="Yes"
+		 	command="unlink ${deploy.host.symlink}; ln -s  ${deploy.host.uncompress.folder}/${version} ${deploy.host.symlink}"/>
 		
 	</target>
 </project>
