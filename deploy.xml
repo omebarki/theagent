@@ -8,7 +8,7 @@
 		<fail unless="deploy.host.name" message="La variable 'deploy.host.name' est vide"/>
 		<fail unless="deploy.host.archives.folder" message="La variable 'deploy.host.archives.folder' est vide"/>
 
-		<scp file="${basedir}/release-${version}.tar.gz" todir="${deploy.username}@${deploy.host.name}:${deploy.host.archives.folder}" keyfile="${deploy.keyfile}"/>
+		<scp file="${basedir}/release-${version}.tar.gz" todir="${deploy.username}@${deploy.host.name}:${deploy.host.archives.folder}" keyfile="${deploy.keyfile}" trust="Yes" />
 		
 	</target>
 </project>
