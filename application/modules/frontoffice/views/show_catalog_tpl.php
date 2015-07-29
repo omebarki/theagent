@@ -40,7 +40,7 @@
 			<a class="showMore active"></a>
 		</div>
 		<a class="btn btn-primary fr" id="addFullSale">Add the sales to my selection</a>
-		<div id="addSuccess" class="fr">
+		<div id="addSuccess" class="floatWindow">
 			<i class="upArrow"></i>
 			<a class="close">X</a>
 			<p class="successMessage tac">
@@ -81,7 +81,7 @@
 		</div>
 	</div>
 	
-	<div id="productDetails">
+	<div id="productDetails" class="floatWindow">
 		<div class="prodWrapper">
 			<a class="close">X</a>
 			<div class="col-sm-5 imageColumn">
@@ -113,7 +113,7 @@
 	<?php if( ! empty($catalog_products)): ?>
 	<?php foreach($catalog_products as $index => $product): ?>
 		<div class="col-lg-2 col-md-3 col-xs-6">
-			<div class="productColumn">
+			<div class="productColumn" title="test">
 				<img src="<?= base_url() ?>assets/frontoffice/img/temp/prod1.jpg" width="248" height="248" alt="Product name" class="img-responsive" />
 				<div class="productInfo clearfix">
 					<p class="productName">SAC JAMILY MARRON</p>
