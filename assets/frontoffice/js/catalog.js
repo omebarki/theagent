@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	//init the favorite click icon
+	//ADD TO WISHLIST
 	$('.mainContainer a.addToFavorites').click( function(event) {
 		var $this = $(this);
 		if($this.hasClass('inactive')){
@@ -9,22 +9,26 @@ $(document).ready(function() {
 		}
 	});
 
+	//SHOW PRODUCT INFOS
 	$('.productColumn').click(function() {
-		var elem = $(this);
+		var $this = $(this);
 		if ( $("#productDetails").hasClass('active') ) {
 			closeActiveWindows();
 			setTimeout(function(){
-				showProductColumn(elem);
+				showProductColumn($this);
 			}, 300);
 		} else {
 			closeActiveWindows();
-			showProductColumn(elem);
+			showProductColumn($this);
 		}
 	});
-	$('#productDetails a.close').click(function() {
+	//CLOSE PRODUCT INFOS
+	$('#productDetails a.close').on('click', function() {
+		console.log('yo');
 		closeActiveWindows();
 	});
 	
+	//???
 	$('#addFullSale').click(function() {
 		closeActiveWindows();
 		$("#addSuccess").show(0).position({
@@ -88,28 +92,34 @@ $('.showLess').click(function() {
 	$(this).addClass('active');
 });
 
-function showProductColumn(elem) {
-	$("#productDetails").show(0);
-	$("#productDetails").position({
-		my: "left+20 top+50",
-		at: "left top",
-		of: elem,
-		collision: "flipfit flipfit",
-		within: $(window),
-		using: function (position, data) {
-			$(this).css(position);
-			//console.log(data);
-			var vertPos = ((data.element.top > data.target.top) ? 'top' : 'bottom');
-			var horiPos = ((data.element.left > data.target.left) ? 'left' : 'right');
-			$("<div>")
-				.addClass(vertPos)
-				.addClass(horiPos)
-				.html("<i class='upArrow'></i>")
-				.attr('id','detailsArrow')
-				.appendTo(this);
+function showProductColumn($elem) {
+	var product_id = $elem.attr('data-id');
+	//AJAX CALL
+	sendAjax('/frontoffice/catalog/getInfos/'+product_id,{},function (json, status){
+	    if(json.idProduct == product_id){
+	    	$("#productDetails").html(json.item).show(0);
+			$("#productDetails").position({
+				my: "left+20 top+50",
+				at: "left top",
+				of: $elem,
+				collision: "flipfit flipfit",
+				within: $(window),
+				using: function (position, data) {
+					$(this).css(position);
+					//console.log(data);
+					var vertPos = ((data.element.top > data.target.top) ? 'top' : 'bottom');
+					var horiPos = ((data.element.left > data.target.left) ? 'left' : 'right');
+					$("<div>")
+						.addClass(vertPos)
+						.addClass(horiPos)
+						.html("<i class='upArrow'></i>")
+						.attr('id','detailsArrow')
+						.appendTo(this);
+				}
+			});
+			$("#productDetails").addClass('active'); //needed for the animation effect
 		}
 	});
-	$("#productDetails").addClass('active'); //needed for the animation effect
 }
 
 // we close all open floating windows

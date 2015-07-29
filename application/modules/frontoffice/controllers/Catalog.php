@@ -62,7 +62,8 @@ class Catalog extends MX_Controller {
 		$this->data['firstname']    = $this->session->userdata('email');
 		$this->data['wishList']     = $wishList;
 		$this->data['title']        = $this->lang->line("catalog");
-		$this->data['assets']       = array(
+		$this->data['active']       = TRUE;
+        $this->data['assets']       = array(
 			'css'                   => array("catalog"),
 			'js'                    => array("catalog"),
 		);
@@ -143,5 +144,23 @@ class Catalog extends MX_Controller {
             	'items'      => $items,
             )));
         }
-    }  
+    }
+
+    public function getInfos($idProduct){
+        if($this->input->is_ajax_request()){
+            $item = array();
+            if($this->checkAccess('role', 'dealer')){
+                $item   = $this->load->view('frontoffice/infos_tpl',array(
+                    'infos'  => $this->catalog->get_infos($idProduct),
+                    'images' => array('1','2','3'),
+                ), TRUE);
+            }
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(array(
+                'idProduct' => $idProduct,
+                'item'      => $item
+            )));
+        }
+    }     
 }

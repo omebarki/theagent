@@ -122,5 +122,27 @@ class Catalog_model extends MX_Model {
 		$query = $this->db->get();
 
 		return $query->result();
-	}	
+	}
+
+	public function get_infos($idProduct) {
+		$this->db
+		->select("pf.id, c.idSaleFruitrouge, pf.reference, pf.price, pf.retailPrice, pf.sizeRange, c18.name AS color_name, t18.name AS type_name, p18.description, p18.name, CONCAT(p18.name,' ',pf.reference,' ',c18.name,'') AS name, SUM(s.quantity) as totalStock")
+		->from('catalog c')
+		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
+		->join('product_family pf','pf.id = pfhc.idProductFamily')
+		->join('product p','p.idProductFamily = pf.id')
+		->join('stock s','s.idProduct = p.id')
+		->join('color_i18n c18',"c18.idColor = pf.idColor AND c18.lang='".$this->locale."'")
+		->join('type_i18n t18',"t18.idtype = pf.idType AND t18.lang='".$this->locale."'")
+		->join('product_i18n p18',"p18.idProductFamily = pf.id AND p18.lang='".$this->locale."'")
+		->where('NOW() BETWEEN c.dateStart AND c.dateEnd')
+		->where('c.enabled', 1)
+		->where('pf.id', $idProduct)
+		->group_by('pf.id');
+		
+		//var_dump($this->db->get_compiled_select());die();
+		$rslt = $this->db->get()->result();
+
+		return $rslt[0];
+	}
 }

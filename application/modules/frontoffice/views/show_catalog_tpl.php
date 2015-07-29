@@ -30,6 +30,9 @@
 				</div>
 			</div>
 			<div class="brandImage col-xs-height col-full-height" style="background:url('http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $details->idSaleFruitrouge ?>/annonce.jpg') no-repeat center center scroll;">
+				<div class="prodWrapper">
+					<a class="close">X</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -82,36 +85,13 @@
 	</div>
 	
 	<div id="productDetails" class="floatWindow">
-		<div class="prodWrapper">
-			<a class="close">X</a>
-			<div class="col-sm-5 imageColumn">
-				<div><img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $details->idSaleFruitrouge ?>/product_#id#/max_0.jpg" /></div>
-				<ul class="productThumbs">
-					<!--li class="active"><img src="" /></li-->
-				</ul>
-			</div>
-			<div class="col-sm-7 detailsColumn">
-				<p class="productName"> <span class="price"></span></p>
-				<span class="brand"></span>
-				<div class="productDesc">
-				</div>
-				<p><?= lang("wholesale_price") ?>:  <strong>#price# €</strong></p>
-				<p><?= lang("retail_price") ?>:  <strong>#retailPrice# €</strong></p>
-				<p><?= lang("stock_pieces") ?>: <strong>#totalStock# pieces</strong></p>
-				<p><?= lang("size_range") ?>: <strong class="price">#sizeRange#</strong></p>
-				<div class="productButtons">
-					<a class="btn btn-primary"><?= lang('add_prod_to_selection') ?></a>
-					<a class="btn btn-default btn-default-black"><?= lang('prod_added_to_selection') ?></a>
-				</div>
-			</div>
-		</div>
 	</div>
 	
 	<div class="row" id="productList">
 	<?php if( ! empty($products)): ?>
 	<?php foreach($products as $index => $product): ?>
 		<div class="col-lg-2 col-md-3 col-xs-6">
-			<div class="productColumn" title="<?= $product->name ?>">
+			<div class="productColumn" title="<?= $product->name ?>" data-id="<?= $product->id ?>">
 				<img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $details->idSaleFruitrouge ?>/product_<?= $product->id ?>/max_0.jpg" width="248" height="248" alt="<?= $product->name ?>" class="img-responsive" />
 				<div class="productInfo clearfix">
 					<p class="productName"><?= $product->name ?></p>
