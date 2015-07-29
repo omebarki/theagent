@@ -12,16 +12,22 @@ class Catalog extends MX_Controller {
     }
 
     public function index() {
-    	$this->checkAccess('acl', 'catalog.read', '/aauth/Aauth/logout');
+    	//ACL
+        $this->checkAccess('acl', 'catalog.read', '/aauth/Aauth/logout');
+        
+        //CATALOGS
         $post     = $this->input->post();
 		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb'],$post);
-		$wishes   = (array)$this->session->userdata('wish');
+		
+        //WISH
+        $wishes   = (array)$this->session->userdata('wish');
 		$wishList = !empty($wishes) 
 			? $this->catalog->get_list_catalog(NULL,array('id' => $wishes))
 			: array();
 		$actives  = array_flip(array_filter(array_unique(array_map(function (stdClass $o) use ($wishes){return in_array($o->id,$wishes) ? $o->id : '';}, $catalogs))));
 
-		$this->data['firstname']    = $this->session->userdata('email');
+		//MAPPING
+        $this->data['firstname']    = $this->session->userdata('email');
 		$this->data['wishList']     = $wishList;
 		$this->data['filters']      = $post;
         $this->data['title']        = $this->lang->line("catalog");
@@ -37,17 +43,22 @@ class Catalog extends MX_Controller {
 			),
 			TRUE
 		);
-
+        //LOAD VIEW
 		$this->load->view('layout_tpl', $this->data);
     }
 
     public function show($idCatalog){
-		$this->checkAccess('acl', 'catalog.read', '/aauth/Aauth/logout');
+		//ACL
+        $this->checkAccess('acl', 'catalog.read', '/aauth/Aauth/logout');
 
+        //WISH
     	$wishList                   = $this->catalog->get_list_catalog(NULL,array('id' => (array)$this->session->userdata('wish')));
-    	$catalog_details            = $this->catalog->get_catalog_details($idCatalog);
+    	
+        //CATALOG
+        $catalog_details            = $this->catalog->get_catalog_details($idCatalog);
     	$catalog_products           = $this->catalog->get_catalog_products($idCatalog);
 
+        //MAPPING
 		$this->data['firstname']    = $this->session->userdata('id');
 		$this->data['wishList']     = $wishList;
 		$this->data['title']        = $this->lang->line("catalog");
@@ -65,8 +76,11 @@ class Catalog extends MX_Controller {
 			TRUE
 		);
 
+        //LOAD VIEW
 		$this->load->view('layout_tpl', $this->data);
     }
+
+//---------------------------AJAX CALLS---------------------------------------------------
 
 	public function addWish($idCatalog){
 		if($this->input->is_ajax_request()){
@@ -81,7 +95,7 @@ class Catalog extends MX_Controller {
             		$wishes[] = $idCatalog;
             		$this->session->set_userdata('wish',$wishes);
             		$ctlg = $this->catalog->get_list_catalog(1,array('id'=>array($idCatalog)))[0];
-            		$item = $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg), TRUE);
+            		$item = $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg,'active'=>TRUE), TRUE);
             	}
             }
             $this->output
@@ -89,6 +103,27 @@ class Catalog extends MX_Controller {
             ->set_output(json_encode(array(
             	'idCatalog' => $idCatalog,
             	'item'      => $item,
+            )));
+        }
+    }
+
+    public function remWish($idCatalog){
+        if($this->input->is_ajax_request()){
+            if($this->checkAccess('role', 'dealer')){
+                $this->loadModel('frontoffice/wishlist');
+                if(!(bool)$this->wishlist->remove_catalog($idCatalog)){
+                    $idCatalog = 0;
+                }
+                else{
+                    $wishes = (array)$this->session->userdata('wish');
+                    $wishes = array_diff($wishes, array($idCatalog));
+                    $this->session->set_userdata('wish',$wishes);
+                }
+            }
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(array(
+                'idCatalog' => $idCatalog,
             )));
         }
     }

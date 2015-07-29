@@ -43,6 +43,18 @@ function toggleLoveBrands() {
   }
 }
 
+function removeWish(catalog_id, index){
+  sendAjax('/frontoffice/catalog/remWish/'+catalog_id,{},function (json, status){
+      if(json.idCatalog == catalog_id){
+        $('.owl-carousel').trigger('remove.owl.carousel', index);
+        $favs = $('.mainContainer a.addToFavorites.active');
+        if($favs.length !== 0){
+          $favs.find('[data-catalog="'+catalog_id+'"]').removeClass('active').addClass('inactive');
+        }
+      }
+  });
+}
+
 $(window).resize(adjustModalMaxHeightAndPosition).trigger("resize");
 //-----------------------------CONFS---------------------------------
 window.onload = function () {
@@ -79,20 +91,17 @@ window.onload = function () {
   };
     //-------------------------------EXTENDS------------------------------
  $('.selectpicker').selectpicker();
- $('.datepicker').datepicker(dPickerConf);
- $('.input-group.date').datepicker({
-		orientation:"bottom",
-	});
+ $('.datepicker, .input-group.date').datepicker(dPickerConf);
  $('.lovedBrands').owlCarousel(owlConf);
   
-	$('li.dropdown.selections a').on('click', function (event) {
+ $('li.dropdown.selections a').on('click', function (event) {
 		$(this).parent().toggleClass("open");
-	});
-	$('body').on('click', function (e) {
+ });
+ $('body').on('click', function (e) {
 		if (!$('li.dropdown.selections').is(e.target) && $('li.dropdown.selections').has(e.target).length === 0 && $('.open').has(e.target).length === 0) {
 			$('li.dropdown.selections').removeClass('open');
 		}
-	});
+ });
 	
 };
 
@@ -108,5 +117,14 @@ $(document).ready(function() {
       $dt = $('<input type="hidden" name="'+name[0]+'"/>').insertAfter($this);
     }
     $dt.val(e.format(0,'yyyy-mm-dd'));
+  });
+  $('.lovedBrands a.addToFavorites').on('click',function(event) {
+    var $this      = $(this);
+    if($this.hasClass('active')){
+      var catalog_id = $this.attr('data-catalog'),
+          index      = $this.parent().parent().index();
+      $(this).removeClass('active').addClass('inactive');
+      removeWish(catalog_id,index);
+    }
   });
 });

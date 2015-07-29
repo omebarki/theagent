@@ -1,11 +1,10 @@
 $(document).ready(function() {
 	//init the favorite click icon
-	$('a.addToFavorites').click( function(event) {
-		if ( $(this).hasClass('active') ) {
-			// remove maybe - donno
-		} else {
-			var catalog_id = $(this).attr('data-catalog');
-			$(this).addClass('active');
+	$('.mainContainer a.addToFavorites').click( function(event) {
+		var $this = $(this);
+		if($this.hasClass('inactive')){
+			var catalog_id = $this.attr('data-catalog');
+			$this.removeClass('inactive').addClass('active');
 			flyImageToFavs(catalog_id);
 		}
 	});
@@ -69,12 +68,11 @@ function flyImageToFavs(catalog_id) {
     .animate({ 'width': $originalImage.attr('width')*0.20, 'height': $originalImage.attr('height')*0.20, 'opacity': 0.2, 'top': brandsBlockOffset.top + 30, 'left': brandsBlockOffset.left + 15 }, 1000)
     .fadeOut(100);
   }
-  
-  add.owl.carousel('<div>sss</div>', 1);
-  
+
+  //AJAX CALL
   sendAjax('/frontoffice/catalog/addWish/'+catalog_id,{},function (json, status){
-	  if(json.idCatalog == catalog_id){
-       // $('.owl-carousel').trigger('add.owl.carousel', $(json.item));
+      if(json.idCatalog == catalog_id){
+        $('.owl-carousel').trigger('add.owl.carousel', [$(json.item)]);
       }
   });
 }
