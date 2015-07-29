@@ -10,3 +10,4 @@ $lang['admin']        = "Admin";
 $lang['logout']       = "Logout";
 $lang['account']      = "Account";
 $lang['search']       = "Search";
+$lang['loading']      = "loading...";

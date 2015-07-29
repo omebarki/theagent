@@ -11,3 +11,4 @@ $lang['mark_as_favorite_brand'] = "Mark as a favorite brand";
 $lang['home']                   = "Home";
 $lang['a_propos']               = "A propos";
 $lang['contact']                = "Contact";
+$lang['thank_you']              = "THANK YOU!";
