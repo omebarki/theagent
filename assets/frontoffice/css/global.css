@@ -75,6 +75,7 @@ h4 {
 .mainContainer {
 	margin-top:20px;
 	margin-bottom:20px;
+	position:relative;
 }
 
 .price {
@@ -167,6 +168,7 @@ a.close:hover {
 	height:50px;
 	line-height:20px;
 	margin-top:4px;
+	cursor:pointer;
 }
 #loveBrandsButton:hover,
 #loveBrandsButton:focus {
@@ -303,11 +305,7 @@ i.upArrow {
 }
 
 #loveBrandList {
-	position:fixed;
-	z-index:1100; /* navbar is 1030 */
-	/*top:-500px;*/
-	top:-800px;
-	opacity:0;
+	opacity: 0;
 	width:100%;
 	padding:15px;
 	background:#E0E0E0;
@@ -315,7 +313,7 @@ i.upArrow {
 	transition: all 0.6s ease;
 }
 #loveBrandList.active {
-	top:70px;
+	margin-top:0 !important;
 	opacity:1;
 }
 #loveBrandList .brandColumn {
@@ -334,13 +332,17 @@ i.upArrow {
 #loveBrandList .owl-item {
 	transition: all 0.2s ease;
 }
+#loveBrandList i.upArrow {
+	z-index:1050;
+	position:fixed !important;
+}
 #loveBrandList i.upArrow:before{
 	display:none;
 }
 #loveBrandList i.upArrow:after{
 	border-bottom: 10px solid #E0E0E0;
-	margin-top:-10px;
-	right:100px;
+	margin:0;
+	right:auto !important;
 }
 
 .agentProgress {

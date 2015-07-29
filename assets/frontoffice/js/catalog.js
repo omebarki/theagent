@@ -72,6 +72,7 @@ function flyImageToFavs(catalog_id) {
     .animate({ 'width': $originalImage.attr('width')*0.20, 'height': $originalImage.attr('height')*0.20, 'opacity': 0.2, 'top': brandsBlockOffset.top + 30, 'left': brandsBlockOffset.left + 15 }, 1000)
     .fadeOut(100);
   }
+
   //AJAX CALL
   sendAjax('/frontoffice/catalog/addWish/'+catalog_id,{},function (json, status){
       if(json.idCatalog == catalog_id){
