@@ -44,7 +44,7 @@ function toggleLoveBrands() {
 }
 
 $(window).resize(adjustModalMaxHeightAndPosition).trigger("resize");
-
+//-----------------------------CONFS---------------------------------
 window.onload = function () {
   owlConf = {
     margin: 15,
@@ -73,18 +73,39 @@ window.onload = function () {
       }
     }
   }
-  $('.selectpicker').selectpicker();
-  $('.datepicker').datepicker({
+  dPickerConf = {
     orientation:"auto",
-  });
-	$('.input-group.date').datepicker({
+  };
+    //-------------------------------EXTENDS------------------------------
+ $('.selectpicker').selectpicker();
+ $('.datepicker').datepicker(dPickerConf);
+ $('.input-group.date').datepicker({
 		orientation:"bottom",
 	});
-  $('.lovedBrands').owlCarousel(owlConf);
+ $('.lovedBrands').owlCarousel(owlConf);
+  
+	$('li.dropdown.selections a').on('click', function (event) {
+		$(this).parent().toggleClass("open");
+	});
+	$('body').on('click', function (e) {
+		if (!$('li.dropdown.selections').is(e.target) && $('li.dropdown.selections').has(e.target).length === 0 && $('.open').has(e.target).length === 0) {
+			$('li.dropdown.selections').removeClass('open');
+		}
+	});
+	
 };
 
 $(document).ready(function() {
   $('a#loveBrandsButton').click(function(){
     toggleLoveBrands();
+  });
+  $('.datepicker').on('changeDate', function(e){
+    var $this = $(this),
+        name  = $this.attr('name').split('_'),
+        $dt   = $('[name="'+name[0]+'"]');
+    if($dt.length === 0){
+      $dt = $('<input type="hidden" name="'+name[0]+'"/>').insertAfter($this);
+    }
+    $dt.val(e.format(0,'yyyy-mm-dd'));
   });
 });

@@ -13,24 +13,22 @@ $(document).ready(function() {
 	$('.productColumn').click(function() {
 		var elem = $(this);
 		if ( $("#productDetails").hasClass('active') ) {
-			$("#productDetails").removeClass('active');
-			$("#detailsArrow").remove();
+			closeActiveWindows();
 			setTimeout(function(){
 				showProductColumn(elem);
 			}, 300);
 		} else {
+			closeActiveWindows();
 			showProductColumn(elem);
 		}
 	});
 	$('#productDetails a.close').click(function() {
-		$("#productDetails").removeClass('active');
-		$("#productDetails").hide(200);
-		$("#detailsArrow").remove();
+		closeActiveWindows();
 	});
 	
 	$('#addFullSale').click(function() {
-		$("#addSuccess").show(0);
-		$("#addSuccess").position({
+		closeActiveWindows();
+		$("#addSuccess").show(0).position({
 			my: "right top+20",
 			at: "right center",
 			of: $(this),
@@ -43,8 +41,7 @@ $(document).ready(function() {
 		$('#planSalesForm').slideDown();
 	});
 	$('#addSuccess a.close').click(function() {
-		$("#addSuccess").hide(200);
-		$("#addSuccess").removeClass('active');
+		closeActiveWindows();
 	});
   
 });
@@ -99,15 +96,26 @@ function showProductColumn(elem) {
 		of: elem,
 		collision: "flipfit flipfit",
 		within: $(window),
-		using: function (position, feedback) {
+		using: function (position, data) {
 			$(this).css(position);
+			//console.log(data);
+			var vertPos = ((data.element.top > data.target.top) ? 'top' : 'bottom');
+			var horiPos = ((data.element.left > data.target.left) ? 'left' : 'right');
 			$("<div>")
-				.addClass(feedback.vertical)
-				.addClass(feedback.horizontal)
+				.addClass(vertPos)
+				.addClass(horiPos)
 				.html("<i class='upArrow'></i>")
 				.attr('id','detailsArrow')
 				.appendTo(this);
 		}
 	});
 	$("#productDetails").addClass('active'); //needed for the animation effect
+}
+
+// we close all open floating windows
+function closeActiveWindows() {
+	if( $('.floatWindow.active').length ) {
+		$('.floatWindow.active').removeClass('active').hide(200);
+		$("#detailsArrow").remove();
+	}
 }

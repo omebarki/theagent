@@ -25,7 +25,7 @@ class Wishlist_model extends MX_Model {
 	}
 
 	public function load() {
-		$idDealer = $this->getDealer();
+		$idDealer = $this->get_dealer();
 
 		$this->db
 		->select('idCatalog')
@@ -33,10 +33,10 @@ class Wishlist_model extends MX_Model {
 		->where('idDealer', $idDealer);
 		
 		$query = $this->db->get();
-		return $this->hydrateArray('idCatalog',$query);
+		return $this->elements('idCatalog',$query);
 	}
 
-	public function getDealer(){
+	public function get_dealer(){
 		$this->db
 		->select('dhc.idDealer')
 		->from('dealer_has_contact dhc')
@@ -45,6 +45,6 @@ class Wishlist_model extends MX_Model {
 		->limit(1);
 
 		$query = $this->db->get();
-		return $this->hydrateOne('idDealer', $query);
+		return $this->element('idDealer', $query);
 	}
 }

@@ -14,7 +14,7 @@ class Catalog_model extends MX_Model {
 	 *
 	 * @return      Array
 	 */
-	public function get_list_catalog($init = NULL, $filters = array()) {
+	public function get_list_catalog($init = NULL, $filters = array(), $offset = 0) {
 		$this->db
 		->select('c.id, DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku,MIN(p.price) as minPrice, MAX(p.price) as maxPrice')
 		->from('catalog c')
@@ -31,13 +31,29 @@ class Catalog_model extends MX_Model {
 
 		//init
 		if(!is_null($init)){
-			$this->db->limit($init);
+			$this->db->limit($offset, $init);
 		}
 
 		//filters
 		if(!empty($filters)){
 			foreach($filters as $key => $filter){
-				$this->db->where_in($key,$filter);
+				if(!empty($filter)){
+					if($key == 'id'){
+						$this->db->where_in("c.id",$filter);
+					}
+					elseif($key == 'dateStart'){
+						$this->db->where("c.dateStart >=",$filter);
+					}
+					elseif($key == 'dateEnd'){
+						$this->db->where("c.dateEnd >=", $filter);
+					}
+					elseif($key == 'sku'){
+						$this->db->where_in("p.sku", $filter);
+					}
+					else{
+						continue;
+					}
+				}
 			}
 		}
 
