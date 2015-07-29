@@ -73,6 +73,7 @@ window.onload = function () {
       }
     }
   }
+  
   dPickerConf = {
     orientation:"auto",
   };
