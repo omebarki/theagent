@@ -24,7 +24,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top fullwidth-bar">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="#" class="navbar-brand"><img src="<?= base_url() ?>assets/frontoffice/img/the-agent-logo-white.png" width="179" height="40" alt="<?= lang('the_agent') ?>"></a>
+			<a href="/frontoffice/catalog" class="navbar-brand"><img src="<?= base_url() ?>assets/frontoffice/img/the-agent-logo-white.png" width="179" height="40" alt="<?= lang('the_agent') ?>"></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown selections">
