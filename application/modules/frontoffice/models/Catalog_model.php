@@ -31,7 +31,7 @@ class Catalog_model extends MX_Model {
 
 		//init
 		if(!is_null($init)){
-			$this->db->limit($offset, $init);
+			$this->db->limit($init, $offset);
 		}
 
 		//filters
@@ -85,11 +85,11 @@ class Catalog_model extends MX_Model {
 		->where('NOW() BETWEEN c.dateStart AND c.dateEnd')
 		->where('c.enabled', 1)
 		->where('c.id', $idCatalog);
-		
-		//var_dump($this->db->get_compiled_select());die();
-		$query = $this->db->get();
 
-		return $query->result();
+		//var_dump($this->db->get_compiled_select());die();
+		$rslt = $this->db->get()->result();
+
+		return $rslt[0];
 	}
 
 	/**
@@ -97,9 +97,9 @@ class Catalog_model extends MX_Model {
 	 *
 	 * @return      Array
 	 */
-	public function get_catalog_products($idCatalog) {
+	public function get_catalog_products($idCatalog, $init = NULL, $filters = array(), $offset = 0) {
 		$this->db
-		->select('pf.reference, pf.price, pf.retailPrice, pf.sizeRange, c18.name, t18.name, p18.description, p18.name, SUM(s.quantity) as totalStock')
+		->select("pf.id, pf.reference, pf.price, pf.retailPrice, pf.sizeRange, c18.name AS color_name, t18.name AS type_name, p18.description, p18.name, CONCAT(p18.name,' ',pf.reference,' ',c18.name,'') AS name, SUM(s.quantity) as totalStock")
 		->from('catalog c')
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
 		->join('product_family pf','pf.id = pfhc.idProductFamily')
@@ -112,6 +112,11 @@ class Catalog_model extends MX_Model {
 		->where('c.enabled', 1)
 		->where('c.id', $idCatalog)
 		->group_by('pf.id');
+
+		//init
+		if(!is_null($init)){
+			$this->db->limit($init, $offset);
+		}
 		
 		//var_dump($this->db->get_compiled_select());die();
 		$query = $this->db->get();

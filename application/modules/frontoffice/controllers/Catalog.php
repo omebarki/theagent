@@ -56,10 +56,10 @@ class Catalog extends MX_Controller {
     	
         //CATALOG
         $catalog_details            = $this->catalog->get_catalog_details($idCatalog);
-    	$catalog_products           = $this->catalog->get_catalog_products($idCatalog);
+        $catalog_products           = $this->catalog->get_catalog_products($idCatalog,$this->config_vars['catalog']['init_product_nb']);
 
         //MAPPING
-		$this->data['firstname']    = $this->session->userdata('id');
+		$this->data['firstname']    = $this->session->userdata('email');
 		$this->data['wishList']     = $wishList;
 		$this->data['title']        = $this->lang->line("catalog");
 		$this->data['assets']       = array(
@@ -70,8 +70,8 @@ class Catalog extends MX_Controller {
 		$this->data['content']      = $this->load->view(
 			'show_catalog_tpl', 
 			array(
-				'catalog_details'   => $catalog_details[0],
-				'catalog_products'  => $catalog_products,
+				'details'   => $catalog_details,
+				'products'  => $catalog_products,
 			),
 			TRUE
 		);
@@ -132,7 +132,7 @@ class Catalog extends MX_Controller {
     	if($this->input->is_ajax_request()){
 			$items = array();
             if($this->checkAccess('role', 'dealer')){
-        		$ctlgs = $this->catalog->get_list_catalog($this->config_vars['catalog']['nb_chunks'],$this->input->post(),$this->input->post('offset'));
+        		$ctlgs = $this->catalog->get_list_catalog($this->config_vars['catalog']['catalog_chunks'],$this->input->post(),$this->input->post('offset'));
         		foreach ($ctlgs as $ctlg) {
         			$items[] = $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg), TRUE);
         		}
