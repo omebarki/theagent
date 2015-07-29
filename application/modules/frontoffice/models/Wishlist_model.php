@@ -14,12 +14,21 @@ class Wishlist_model extends MX_Model {
     }
 
 	public function add_catalog($idCatalog) {
-		$idDealer = $this->getDealer();
+		$idDealer = $this->get_dealer();
 
 		$this->db->insert($this->table, array(
 			'idDealer'  => $idDealer,
 			'idCatalog' => $idCatalog 
 		));
+
+		return $this->db->affected_rows();
+	}
+
+	public function remove_catalog($idCatalog) {
+		$idDealer = $this->get_dealer();
+
+		$this->db->where(array('idDealer' => $idDealer, 'idCatalog' => $idCatalog))
+				 ->delete($this->table);
 
 		return $this->db->affected_rows();
 	}
