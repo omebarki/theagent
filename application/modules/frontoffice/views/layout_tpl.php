@@ -19,7 +19,7 @@
 <body>
 <!-- Page Content -->
 <?php if(isset($is_full_page)): ?>
-<?= $this->load->view('frontoffice/full_page_tpl') ?>
+<?= $this->load->view('frontoffice/full_page_tpl',array('filters'=>$filters)) ?>
 <?php endif; ?>
 <nav class="navbar navbar-inverse navbar-fixed-top fullwidth-bar">
 	<div class="container">
