@@ -52,11 +52,11 @@ function toggleLoveBrands() {
 function removeWish(catalog_id, index){
   sendAjax('/frontoffice/catalog/remWish/'+catalog_id,{},function (json, status){
       if(json.idCatalog == catalog_id){
-        $('.owl-carousel').trigger('remove.owl.carousel', index);
         $favs = $('.mainContainer a.addToFavorites.active');
         if($favs.length !== 0){
           $favs.find('[data-catalog="'+catalog_id+'"]').removeClass('active').addClass('inactive');
         }
+        $('.owl-carousel').trigger('del.owl.carousel', [index]).trigger('refresh.owl.carousel');
       }
   });
 }
@@ -67,7 +67,6 @@ function detectCarouselSize() {
 	if( $('#fullPageContainer').length == 0 ) {
 		$('#brandsListPlaceHolder').css({'margin-top':carouselHeight*(-1), 'height':carouselHeight});
 	} else { // we are on homepage
-		//$('#fullPageContainer').css({'margin-top':carouselHeight}).addClass('noMove');
 		$('#brandsListPlaceHolderHome').css({'margin-top':carouselHeight*(-1), 'height':carouselHeight});
 	}
 }

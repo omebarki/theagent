@@ -40,7 +40,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	//???
+	// add the sales to my selections button actions on catalog page
 	$('#addFullSale').click(function() {
 		closeActiveWindows();
 		$("#addSuccess").show(0).position({
@@ -105,6 +105,7 @@ $('.showLess').click(function() {
 	$(this).addClass('active');
 });
 
+// show product details in a modal style window
 function showProductColumn($elem) {
 	var product_id = $elem.attr('data-id');
 	//AJAX CALL
