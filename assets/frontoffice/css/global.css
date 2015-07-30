@@ -345,10 +345,12 @@ i.upArrow {
 	margin-top:-10px;
 }
 
-#brandsListPlaceHolder {
-	transition: all 0.5s ease;
+#brandsListPlaceHolder,
+#brandsListPlaceHolderHome {
+	transition: all 0.6s ease;
 }
-#brandsListPlaceHolder.active {
+#brandsListPlaceHolder.active,
+#brandsListPlaceHolderHome.active {
 	margin-top:0 !important;
 }
 

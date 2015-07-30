@@ -39,11 +39,13 @@ function toggleLoveBrands() {
 	if ( $(brandsList).hasClass('active') ) {
 		$(brandsList).removeClass('active');
 		$('#brandsListPlaceHolder').removeClass('active');
-		$('#fullPageContainer').addClass('resized');
+		$('#brandsListPlaceHolderHome').removeClass('active');
+		//$('#fullPageContainer').addClass('noMove');
 	} else {
 		$(brandsList).addClass('active');
 		$('#brandsListPlaceHolder').addClass('active');
-		$('#fullPageContainer').removeClass('resized');
+		$('#brandsListPlaceHolderHome').addClass('active');
+		//$('#fullPageContainer').removeClass('noMove');
 	}
 }
 
@@ -62,11 +64,11 @@ function removeWish(catalog_id, index){
 function detectCarouselSize() {
 	carouselHeight = (($('#loveBrandList').height()) + 30);
 	
-	if( $('#fullPageContainer').length == 0 ) { 
+	if( $('#fullPageContainer').length == 0 ) {
 		$('#brandsListPlaceHolder').css({'margin-top':carouselHeight*(-1), 'height':carouselHeight});
 	} else { // we are on homepage
-		$('#fullPageContainer').css({'margin-top':carouselHeight});
-		$('#fullPageContainer').addClass('resized');
+		//$('#fullPageContainer').css({'margin-top':carouselHeight}).addClass('noMove');
+		$('#brandsListPlaceHolderHome').css({'margin-top':carouselHeight*(-1), 'height':carouselHeight});
 	}
 }
 

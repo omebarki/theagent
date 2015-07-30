@@ -88,7 +88,7 @@ function flyImageToFavs(catalog_id) {
   //AJAX CALL
   sendAjax('/frontoffice/catalog/addWish/'+catalog_id,{},function (json, status){
       if(json.idCatalog == catalog_id){
-        $('.owl-carousel').trigger('add.owl.carousel', [$(json.item)]);
+        $('.owl-carousel').trigger('add.owl.carousel', [$(json.item), 0]).trigger('refresh.owl.carousel');
       }
   });
 }

@@ -1,4 +1,5 @@
 <?php get_instance()->load->helper(array('form')) ?>
+<div id="brandsListPlaceHolderHome"></div>
 <div id="fullPageContainer">
 	<div class="overText"><div class="tr"><img src="<?= base_url() ?>assets/frontoffice/img/bg-homepage-text-<?= lang('lg') ?>.png" width="863" height="199" alt="<?= lang('homepage_text') ?>"></div></div>
 	<div id="searchBlock">
