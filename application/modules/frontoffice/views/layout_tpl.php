@@ -111,17 +111,16 @@
 		</ul>
 	</div><!--/.container-fluid -->
 
-	<div id="loveBrandList">
-		<i class="upArrow"></i>
-		<div class="lovedBrands owl-carousel">
-			<?php foreach($wishList as $wish): ?>
-				<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
-			<?php endforeach; ?>
-		</div>
-	</div>
-
 </nav>
 
+<div id="loveBrandList">
+	<!--i class="upArrow"></i-->
+	<div class="lovedBrands owl-carousel">
+		<?php foreach($wishList as $wish): ?>
+			<?= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$wish)) ?>
+		<?php endforeach; ?>
+	</div>
+</div>
 <div id="brandsListPlaceHolder"></div>
 
 <?= $content ?>
