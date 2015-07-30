@@ -87,7 +87,7 @@ window.onload = function () {
 };
 
 $(document).ready(function() {
-  
+  lg = $('html').attr('lang');
   $('.datepicker').on('changeDate', function(e){
     var $this = $(this),
         name  = $this.attr('name').split('_'),

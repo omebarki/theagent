@@ -25,6 +25,9 @@ function redirect(redirect){
 }
 
 function sendAjax(route, data, callback){
+	if(data !== {}){
+		route = '/'+lg+'/'+route;
+	}
 	if(callback == undefined){
 		callback = displayResponse;
 	}

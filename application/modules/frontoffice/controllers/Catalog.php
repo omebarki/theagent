@@ -17,8 +17,8 @@ class Catalog extends MX_Controller {
         
         //CATALOGS
         $post     = $this->input->post();
-		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb'],$post);
-		
+		$catalogs = $this->catalog->get_list_catalog($this->config_vars['catalog']['init_catalog_nb'],$post,0);
+        $total    = $this->catalog->get_list_catalog(NULL,$post,0,TRUE);
         //WISH
         $wishes   = (array)$this->session->userdata('wish');
 		$wishList = !empty($wishes) 
@@ -32,14 +32,15 @@ class Catalog extends MX_Controller {
 		$this->data['filters']      = $post;
         $this->data['title']        = $this->lang->line("catalog");
 		$this->data['assets']       = array(
-			'js'                    => array("catalog"),
+			'js'                    => array("catalog","isInViewport.min"),
 		);
 		$this->data['is_full_page'] = TRUE;
 		$this->data['content']      = $this->load->view(
 			'catalog_tpl',
 			array(
 				'list_catalog'      => $catalogs,
-				'actives'           => $actives
+				'actives'           => $actives,
+                'total'             => $total
 			),
 			TRUE
 		);
@@ -65,7 +66,7 @@ class Catalog extends MX_Controller {
 		$this->data['active']       = TRUE;
         $this->data['assets']       = array(
 			'css'                   => array("catalog"),
-			'js'                    => array("catalog"),
+			'js'                    => array("catalog","isInViewport.min"),
 		);
 		$this->data['page_style']   = "show_catalog";
 		$this->data['content']      = $this->load->view(
@@ -135,13 +136,30 @@ class Catalog extends MX_Controller {
             if($this->checkAccess('role', 'dealer')){
         		$ctlgs = $this->catalog->get_list_catalog($this->config_vars['catalog']['catalog_chunks'],$this->input->post(),$this->input->post('offset'));
         		foreach ($ctlgs as $ctlg) {
-        			$items[] = $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg), TRUE);
+        			$items[] = '<div class="col-lg-4 col-sm-6 brandColumnBlock">'.$this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg), TRUE).'</div>';
         		}
             }
             $this->output
             ->set_content_type('application/json')
             ->set_output(json_encode(array(
             	'items'      => $items,
+            )));
+        }
+    }
+
+    public function filterProduct(){
+        if($this->input->is_ajax_request()){
+            $items = $filters = array();
+            if($this->checkAccess('role', 'dealer')){
+                $prods = $this->catalog->get_catalog_products($this->input->post('id'), $this->config_vars['catalog']['product_chunks'], $filters,$this->input->post('offset'));
+                foreach ($prods as $prod) {
+                    $items[] = $this->load->view('frontoffice/prod_tpl',array('product'=>$prod), TRUE);
+                }
+            }
+            $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(array(
+                'items'      => $items,
             )));
         }
     }

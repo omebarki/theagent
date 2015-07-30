@@ -14,7 +14,7 @@ class Catalog_model extends MX_Model {
 	 *
 	 * @return      Array
 	 */
-	public function get_list_catalog($init = NULL, $filters = array(), $offset = 0) {
+	public function get_list_catalog($init = NULL, $filters = array(), $offset = 0, $nbRows = FALSE) {
 		$this->db
 		->select('c.id, DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku,MIN(p.price) as minPrice, MAX(p.price) as maxPrice')
 		->from('catalog c')
@@ -27,7 +27,7 @@ class Catalog_model extends MX_Model {
 		->where('NOW() BETWEEN c.dateStart AND c.dateEnd')
 		->where('c.enabled', 1)
 		->group_by('c.idSaleFruitrouge')
-		->order_by('dateStart DESC');
+		->order_by('c.dateStart DESC');
 
 		//init
 		if(!is_null($init)){
@@ -59,8 +59,12 @@ class Catalog_model extends MX_Model {
 
 		//var_dump($this->db->get_compiled_select());die();
 		$query = $this->db->get();
-
-		return $query->result();
+		if($nbRows){
+			return count($query->result());
+		}
+		else{
+			return $query->result();
+		}
 	}
 
 	/**
@@ -70,7 +74,7 @@ class Catalog_model extends MX_Model {
 	 */
 	public function get_catalog_details($idCatalog) {
 		$this->db
-		->select('c.id, DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, c18.name AS saleName, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku, COUNT(DISTINCT pf.id) as nbPF, MIN(p.price) as minPrice, MAX(p.price) as maxPrice, bd.description AS brandDescription, ct.*')
+		->select('c.id AS cid, DATE(c.dateEnd) as dateEnd, c.idSaleFruitrouge, c18.name AS saleName, b.name AS brandName,SUM(s.quantity) as totalStock, COUNT(p.id) as nbSku, COUNT(DISTINCT pf.id) as nbPF, MIN(p.price) as minPrice, MAX(p.price) as maxPrice, bd.description AS brandDescription, ct.*')
 		->from('catalog c')
 		->join('catalog_i18n c18','c18.idCatalog = c.id')
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
@@ -99,15 +103,15 @@ class Catalog_model extends MX_Model {
 	 */
 	public function get_catalog_products($idCatalog, $init = NULL, $filters = array(), $offset = 0) {
 		$this->db
-		->select("pf.id, pf.reference, pf.price, pf.retailPrice, pf.sizeRange, c18.name AS color_name, t18.name AS type_name, p18.description, p18.name, CONCAT(p18.name,' ',pf.reference,' ',c18.name,'') AS name, SUM(s.quantity) as totalStock")
+		->select("pf.id, pf.reference, pf.price, pf.retailPrice, pf.sizeRange, c.idSaleFruitrouge, c18.name AS color_name, t18.name AS type_name, p18.description, p18.name, CONCAT(p18.name,' ',pf.reference,' ',c18.name,'') AS name, SUM(s.quantity) as totalStock")
 		->from('catalog c')
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
 		->join('product_family pf','pf.id = pfhc.idProductFamily')
 		->join('product p','p.idProductFamily = pf.id')
-		->join('stock s','s.idProduct = p.id')
-		->join('color_i18n c18',"c18.idColor = pf.idColor AND c18.lang='".$this->locale."'")
-		->join('type_i18n t18',"t18.idtype = pf.idType AND t18.lang='".$this->locale."'")
-		->join('product_i18n p18',"p18.idProductFamily = pf.id AND p18.lang='".$this->locale."'")
+		->join('stock s','s.idProduct = p.id','left')
+		->join('color_i18n c18',"c18.idColor = pf.idColor AND c18.lang='".$this->locale."'",'left')
+		->join('type_i18n t18',"t18.idtype = pf.idType AND t18.lang='".$this->locale."'",'left')
+		->join('product_i18n p18',"p18.idProductFamily = pf.id AND p18.lang='".$this->locale."'",'left')
 		->where('NOW() BETWEEN c.dateStart AND c.dateEnd')
 		->where('c.enabled', 1)
 		->where('c.id', $idCatalog)
@@ -131,10 +135,10 @@ class Catalog_model extends MX_Model {
 		->join('product_family_has_catalog pfhc','pfhc.idCatalog = c.id')
 		->join('product_family pf','pf.id = pfhc.idProductFamily')
 		->join('product p','p.idProductFamily = pf.id')
-		->join('stock s','s.idProduct = p.id')
-		->join('color_i18n c18',"c18.idColor = pf.idColor AND c18.lang='".$this->locale."'")
-		->join('type_i18n t18',"t18.idtype = pf.idType AND t18.lang='".$this->locale."'")
-		->join('product_i18n p18',"p18.idProductFamily = pf.id AND p18.lang='".$this->locale."'")
+		->join('stock s','s.idProduct = p.id','left')
+		->join('color_i18n c18',"c18.idColor = pf.idColor AND c18.lang='".$this->locale."'",'left')
+		->join('type_i18n t18',"t18.idtype = pf.idType AND t18.lang='".$this->locale."'",'left')
+		->join('product_i18n p18',"p18.idProductFamily = pf.id AND p18.lang='".$this->locale."'",'left')
 		->where('NOW() BETWEEN c.dateStart AND c.dateEnd')
 		->where('c.enabled', 1)
 		->where('pf.id', $idProduct)

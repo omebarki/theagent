@@ -1,4 +1,15 @@
 $(document).ready(function() {
+//----------------------GLOBALS------------------------------------
+	list            = $("#catalogList").length > 0
+					? "catalog" 
+					: "product";
+	selector        = "#"+list+"List";
+	$list           = $(selector);
+	total           = parseInt($list.attr("data-total"));
+	moreToDisplay   = 1;
+	$loader         = $('#loader');
+//-------------------------------------------------------------------
+
 	//ADD TO WISHLIST
 	$('.mainContainer a.addToFavorites').click( function(event) {
 		var $this = $(this);
@@ -10,7 +21,7 @@ $(document).ready(function() {
 	});
 
 	//SHOW PRODUCT INFOS
-	$('.productColumn').click(function() {
+	$('#productList').on('click','.productColumn', function() {
 		var $this = $(this);
 		if ( $("#productDetails").hasClass('active') ) {
 			closeActiveWindows();
@@ -58,6 +69,8 @@ $(document).ready(function() {
 	$('#addSuccess a.close').click(function() {
 		closeActiveWindows();
 	});
+
+	$(window).scroll(handleScroll);
   	
 });
 
@@ -141,4 +154,33 @@ function closeActiveWindows() {
 		$('.floatWindow.active').removeClass('active').hide(200);
 		$("#detailsArrow").remove();
 	}
+}
+
+function handleScroll(){
+	var wScroll    = $(this).scrollTop();
+    if($loader.length != undefined){
+    	var dataOffset    = $(selector+" > div").length;
+		if($loader.is(':in-viewport') && moreToDisplay > 0){
+	  	    if($loader.css('display') == 'none'){
+	  	    	$loader.fadeIn(200);
+	  	    }
+	  	    var method = "filter"+list.charAt(0).toUpperCase()+list.slice(1),
+	  	    	data   = {'offset':dataOffset}
+	  	    if(list == "product"){
+	  	    	data.id = $list.attr('data-catalog');
+	  	    }
+	  	    //AJAX CALL
+		  	sendAjax('/frontoffice/catalog/'+method,data,function (json, status){
+		      	if(json.items !== undefined){
+		      		if(json.items.length > 0){
+		        		$list.append(json.items.join(''));
+		        		moreToDisplay = total - $(selector+" > div").length > 0;
+		      		}
+		      		if(!moreToDisplay){
+			      		$loader.fadeOut(200);
+		      		}
+		      	}
+		  	});
+	  	}
+    }
 }

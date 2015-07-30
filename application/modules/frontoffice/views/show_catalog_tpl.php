@@ -84,23 +84,10 @@
 	<div id="productDetails" class="floatWindow">
 	</div>
 	
-	<div class="row" id="productList">
+	<div class="row" id="productList" data-catalog="<?= $details->cid ?>" data-total="<?= $details->nbPF ?>">
 	<?php if( ! empty($products)): ?>
 	<?php foreach($products as $index => $product): ?>
-		<div class="col-lg-2 col-md-3 col-xs-6">
-			<div class="productColumn" title="<?= $product->name ?>" data-id="<?= $product->id ?>">
-				<img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $details->idSaleFruitrouge ?>/product_<?= $product->id ?>/max_0.jpg" width="248" height="248" alt="<?= $product->name ?>" class="img-responsive" />
-				<div class="productInfo clearfix">
-					<p class="productName"><?= $product->name ?></p>
-					<p><?= $product->description ?></p>
-					<div class="clearfix"></div>
-					<p><?= lang("wholesale_price") ?>:  <strong class="price"><?= $product->price ?> €</strong></p>
-					<p><?= lang("retail_price") ?>:  <strong class="price"><?= $product->retailPrice ?> €</strong></p>
-					<p><?= lang("stock_pieces") ?>: <strong class="price"><?= $product->totalStock ?> <?= lang('pieces') ?></strong></p>
-					<p><?= lang("size_range") ?>: <strong class="price"><?= $product->sizeRange ?></strong></p>
-				</div>
-			</div>
-		</div>
+	<?= $this->load->view('frontoffice/prod_tpl', array('product'=>$product)) ?>		
 	<?php endforeach ?>
 	<?php endif ?>
 	</div>
