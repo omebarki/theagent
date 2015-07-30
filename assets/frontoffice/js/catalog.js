@@ -23,8 +23,21 @@ $(document).ready(function() {
 		}
 	});
 	//CLOSE PRODUCT INFOS
-	$('#productDetails a.close').on('click', function() {
+	$('#productDetails').on('click', 'a.close', function() {
 		closeActiveWindows();
+	});
+	//CHANGE PRODUCT IMAGE
+	$('#productDetails').on('click', '.productThumbs img', function() {
+		var $this   = $(this),
+			$active = $this.parent().parent().find('li.active');
+		if(!$this.parent().hasClass('active')){
+			var pattern = /max_[0-9].jpg/,
+				src     = $("#mainImg").attr('src'),
+				index   = $this.parent().attr('data-index');
+			$active.removeClass('active');
+			$this.parent().addClass('active');
+			$("#mainImg").attr('src', src.replace(pattern, "max_"+index+".jpg"));
+		}
 	});
 	
 	//???
@@ -45,7 +58,7 @@ $(document).ready(function() {
 	$('#addSuccess a.close').click(function() {
 		closeActiveWindows();
 	});
-  
+  	
 });
 
 // animate image move to quote cart

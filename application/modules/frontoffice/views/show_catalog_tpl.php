@@ -30,9 +30,6 @@
 				</div>
 			</div>
 			<div class="brandImage col-xs-height col-full-height" style="background:url('http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $details->idSaleFruitrouge ?>/annonce.jpg') no-repeat center center scroll;">
-				<div class="prodWrapper">
-					<a class="close">X</a>
-				</div>
 			</div>
 		</div>
 	</div>

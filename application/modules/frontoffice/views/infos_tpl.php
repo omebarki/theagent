@@ -1,10 +1,10 @@
 <div class="prodWrapper">
 	<a class="close">X</a>
 	<div class="col-sm-5 imageColumn">
-		<div><img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $infos->idSaleFruitrouge ?>/product_<?= $infos->id ?>/max_0.jpg" /></div>
+		<div><img id="mainImg" src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $infos->idSaleFruitrouge ?>/product_<?= $infos->id ?>/max_0.jpg" width="250"/></div>
 		<ul class="productThumbs">
 			<?php foreach($images as $index => $img): ?>
-			<li <?php if($index == 0): ?>class="active"<?php endif; ?>><img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $infos->idSaleFruitrouge ?>/product_<?= $infos->id ?>/small_<?= $img ?>.jpg" /></li>
+			<li <?php if($index == 0): ?>class="active"<?php endif; ?> data-index="<?= $img ?>"><img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $infos->idSaleFruitrouge ?>/product_<?= $infos->id ?>/small_<?= $img ?>.jpg" /></li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
