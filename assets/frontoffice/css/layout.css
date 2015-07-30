@@ -125,6 +125,10 @@ html,body{height:100%;}
 	-o-background-size: cover;
 	background-size: cover;
 }
+#loveBrandList .brandColumn .addToFavorites.active,
+#loveBrandList .brandColumn .addToFavorites.active:hover {
+	cursor:pointer;
+}
 
 .brandColumn .brandInfo {
 	position:absolute;

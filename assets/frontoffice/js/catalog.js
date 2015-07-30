@@ -51,7 +51,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	//???
+	// add the sales to my selections button actions on catalog page
 	$('#addFullSale').click(function() {
 		closeActiveWindows();
 		$("#addSuccess").show(0).position({
@@ -101,7 +101,9 @@ function flyImageToFavs(catalog_id) {
   //AJAX CALL
   sendAjax('/frontoffice/catalog/addWish/'+catalog_id,{},function (json, status){
       if(json.idCatalog == catalog_id){
-        $('.owl-carousel').trigger('add.owl.carousel', [$(json.item)]);
+			setTimeout(function(){
+				$('.owl-carousel').trigger('add.owl.carousel', [$(json.item)]).trigger('refresh.owl.carousel');
+			}, 1000);
       }
   });
 }
@@ -118,6 +120,7 @@ $('.showLess').click(function() {
 	$(this).addClass('active');
 });
 
+// show product details in a modal style window
 function showProductColumn($elem) {
 	var product_id = $elem.attr('data-id');
 	//AJAX CALL

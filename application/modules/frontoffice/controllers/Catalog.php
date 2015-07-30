@@ -97,7 +97,9 @@ class Catalog extends MX_Controller {
             		$wishes[] = $idCatalog;
             		$this->session->set_userdata('wish',$wishes);
             		$ctlg = $this->catalog->get_list_catalog(1,array('id'=>array($idCatalog)))[0];
-            		$item = $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg,'active'=>TRUE), TRUE);
+					$item = '<div class="owl-item">';
+            		$item .= $this->load->view('frontoffice/ctlg_tpl',array('catalog'=>$ctlg,'active'=>TRUE), TRUE);
+					$item .= '</div>';
             	}
             }
             $this->output
