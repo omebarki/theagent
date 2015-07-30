@@ -24,7 +24,6 @@ $(document).ready(function() {
 	});
 	//CLOSE PRODUCT INFOS
 	$('#productDetails a.close').on('click', function() {
-		console.log('yo');
 		closeActiveWindows();
 	});
 	

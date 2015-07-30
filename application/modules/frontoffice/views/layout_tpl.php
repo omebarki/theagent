@@ -27,7 +27,7 @@
 			<a href="/frontoffice/catalog" class="navbar-brand"><img src="<?= base_url() ?>assets/frontoffice/img/the-agent-logo-white.png" width="179" height="40" alt="<?= lang('the_agent') ?>"></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown selections">
+			<!--li class="dropdown selections">
 				<a aria-expanded="false" aria-haspopup="true" role="button" class="dropdown-toggle" href="#">
 					<span class="bellIcon"></span><span class="userName"> Selection</span> <span class="caret"></span>
 				</a>
@@ -94,7 +94,7 @@
 						</div>
 					</li>
 				</ul>
-			</li>
+			</li-->
 			<li class="dropdown">
 			  <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
 				<span class="userIcon"></span><span class="userName"> <?= $firstname ?></span> <span class="caret"></span>
@@ -106,7 +106,7 @@
 				<li><a href="/aauth/Aauth/logout"><?= lang('logout') ?></a></li>
 			  </ul>
 			</li>
-			<li><a href="#" class="myMessages"><span class="envelope"></span></a></li>
+			<!--li><a href="#" class="myMessages"><span class="envelope"></span></a></li-->
 			<li><a class="btn btn-primary" id="loveBrandsButton"><span class="heartIcon heartIconTop"></span><span class="hidden-xs hidden-sm"> <?= lang('love_brands') ?></span></a></li>
 		</ul>
 	</div><!--/.container-fluid -->
