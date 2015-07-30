@@ -38,9 +38,11 @@ function toggleLoveBrands() {
 	
 	if ( $(brandsList).hasClass('active') ) {
 		$(brandsList).removeClass('active');
+		$('#brandsListPlaceHolder').removeClass('active');
 	} else {
 		$(brandsList).addClass('active');
-		moveBrandsListArrow();
+		$('#brandsListPlaceHolder').addClass('active');
+		//moveBrandsListArrow();
 	}
 }
 
@@ -57,8 +59,8 @@ function removeWish(catalog_id, index){
 }
 
 function detectCarouselSize() {
-	carouselHeight = $('#loveBrandList').height();
-	$('#loveBrandList').css('margin-top',((carouselHeight + 30)*(-1)));
+	carouselHeight = (($('#loveBrandList').height()) + 30);
+	$('#brandsListPlaceHolder').css({'margin-top':carouselHeight*(-1), 'height':carouselHeight});
 }
 
 function moveBrandsListArrow() {

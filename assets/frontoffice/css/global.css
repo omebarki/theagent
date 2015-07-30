@@ -310,11 +310,13 @@ i.upArrow {
 	padding:15px;
 	background:#E0E0E0;
 	border-bottom:2px solid #000;
-	transition: all 0.6s ease;
+	position:absolute;
+	top:-500px;
+	transition: all 0.5s ease;
 }
 #loveBrandList.active {
-	margin-top:0 !important;
 	opacity:1;
+	top:70px;
 }
 #loveBrandList .brandColumn {
 	border:1px solid #FFF;
@@ -332,17 +334,22 @@ i.upArrow {
 #loveBrandList .owl-item {
 	transition: all 0.2s ease;
 }
-#loveBrandList i.upArrow {
-	z-index:1050;
-	position:fixed !important;
-}
 #loveBrandList i.upArrow:before{
 	display:none;
 }
 #loveBrandList i.upArrow:after{
 	border-bottom: 10px solid #E0E0E0;
-	margin:0;
-	right:auto !important;
+	position:absolute;
+	right:50px;
+	top:0 !important;
+	margin-top:-10px;
+}
+
+#brandsListPlaceHolder {
+	transition: all 0.5s ease;
+}
+#brandsListPlaceHolder.active {
+	margin-top:0 !important;
 }
 
 .agentProgress {
