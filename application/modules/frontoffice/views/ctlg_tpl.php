@@ -2,7 +2,6 @@
 <div class="brandColumn">
 	<a href="/frontoffice/catalog/show/<?= $catalog->id ?>">
 		<img id="img_<?= $catalog->id ?>" src=" http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $catalog->idSaleFruitrouge ?>/currentSaleV4.jpg" width="450" height="340" class="img-responsive">
-		<img src="http://media<?= rand(1,3) ?>.fruitrouge.com/data/sale/sale_<?= $catalog->idSaleFruitrouge ?>/baselineFR-fr.jpg" width="450" height="340" class="img-responsive baseline">
     </a>
     <a class="addToFavorites <?php if(isset($actives[$catalog->id]) or isset($active)): ?>active<?php else: ?>inactive<?php endif;?>" data-catalog="<?= $catalog->id ?>" title="<?= lang('mark_as_favorite_brand') ?>"></a>
 	<div class="brandInfo clearfix">
