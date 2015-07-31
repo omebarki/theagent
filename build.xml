@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare,phpunit,phpmd,pdepend,phploc-ci"
+         depends="prepare,phpunit,phpmd,pdepend,phploc-ci,phpcs-ci"
          description=""/>
 
 <target name="prepare"
@@ -67,6 +67,16 @@
 		   <arg path="${basedir}/build/logs/phploc.xml" />
 		   <arg path="${basedir}/application" />
 		   <arg path="${basedir}/tests" />
+	  </exec>
+ </target>
+ <target name="phpcs-ci"  description="Find coding standard violations using PHP_CodeSniffer and log result in XML format">
+	  <exec executable="${toolsdir}phpcs" output="/dev/null" taskname="phpcs">
+		   <arg value="--report=checkstyle" />
+		   <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+		   <arg value="--standard=PSR2" />
+		   <arg value="--extensions=php" />
+		   <arg value="--ignore=autoload.php" />
+		   <arg path="${basedir}/applicatio" />
 	  </exec>
  </target>
 </project>
