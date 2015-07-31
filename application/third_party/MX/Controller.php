@@ -123,8 +123,10 @@ class MX_Controller
 		if(!is_null($path)){
 			list($module_name, $class_name) = explode('/',$path);
 		}
-		$this->load->model($module_name.'/'.$class_name.'_model',$class_name);
-		$this->{$class_name}->locale = $this->session->userdata('locale');
+		if(file_exists(APPPATH.'modules/'.$module_name.'/models/'.ucfirst($class_name).'_model.php')){
+			$this->load->model($module_name.'/'.$class_name.'_model',$class_name);
+			$this->{$class_name}->locale = $this->session->userdata('locale');
+		}
 	}
 
 	private function loadLocales(){

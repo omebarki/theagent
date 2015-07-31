@@ -4,7 +4,6 @@
 <link href="<?= base_url() ?>assets/common/css/jquery-ui.css" rel="stylesheet">
 
 <!-- The agent resets and styles -->
-<link href="<?= base_url() ?>assets/frontoffice/css/reset.css" rel="stylesheet">
 <link href="<?= base_url() ?>assets/frontoffice/css/bootstrap-select.css" rel="stylesheet">
 <link href="<?= base_url() ?>assets/frontoffice/css/bootstrap-datepicker.min.css" rel="stylesheet">
 <link href="<?= base_url() ?>assets/frontoffice/css/owl.carousel.css" rel="stylesheet">

@@ -68,7 +68,6 @@ class Catalog extends MX_Controller {
 			'css'                   => array("catalog"),
 			'js'                    => array("catalog","isInViewport.min"),
 		);
-		$this->data['page_style']   = "show_catalog";
 		$this->data['content']      = $this->load->view(
 			'show_catalog_tpl', 
 			array(
