@@ -76,7 +76,7 @@
 		   <arg value="--standard=PSR2" />
 		   <arg value="--extensions=php" />
 		   <arg value="--ignore=autoload.php" />
-		   <arg path="${basedir}/applicatio" />
+		   <arg path="${basedir}/application" />
 	  </exec>
  </target>
 </project>
