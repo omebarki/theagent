@@ -120,6 +120,9 @@ $(document).ready(function() {
 	});
   
   var owl = $('.lovedBrands');
+  owl.on('initialized.owl.carousel refreshed.owl.carousel ', function() {
+	  setTimeout(detectCarouselSize, 250);
+  });
   owl.owlCarousel({
 	items: 0,
 	margin: 15,
@@ -147,9 +150,6 @@ $(document).ready(function() {
 		items: 6
 	  }
 	}
-  });
-  owl.on('initialized.owl.carousel refreshed.owl.carousel ', function() {
-	  setTimeout(detectCarouselSize, 250);
   });
   /*owl.on('initialize.owl.carousel initialized.owl.carousel ' +
 	'initialize.owl.carousel initialize.owl.carousel ' +
