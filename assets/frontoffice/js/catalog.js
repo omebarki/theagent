@@ -6,6 +6,7 @@ $(document).ready(function() {
 	selector        = "#"+list+"List";
 	$list           = $(selector);
 	total           = parseInt($list.attr("data-total"));
+	inViewPort      = false;
 	moreToDisplay   = 1;
 	$loader         = $('#loader');
 //-------------------------------------------------------------------
@@ -163,10 +164,13 @@ function handleScroll(){
 	var wScroll    = $(this).scrollTop();
     if($loader.length != undefined){
     	var dataOffset    = $(selector+" > div").length;
-		if($loader.is(':in-viewport') && moreToDisplay > 0){
+    	// IF PAGE BOTTOM VISIBLE
+		if($loader.is(':in-viewport') && moreToDisplay > 0 && !inViewPort){
+			inViewPort = true;
 	  	    if($loader.css('display') == 'none'){
 	  	    	$loader.fadeIn(200);
 	  	    }
+	  	    //METHOD + DATA
 	  	    var method = "filter"+list.charAt(0).toUpperCase()+list.slice(1),
 	  	    	data   = {'offset':dataOffset}
 	  	    if(list == "product"){
@@ -182,6 +186,7 @@ function handleScroll(){
 		      		if(!moreToDisplay){
 			      		$loader.fadeOut(200);
 		      		}
+		      		inViewPort = false;
 		      	}
 		  	});
 	  	}
