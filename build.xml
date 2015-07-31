@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare,phpmd,phpunit"
+         depends="prepare,phpunit,phpmd,pdepend,phploc-ci"
          description=""/>
 
 <target name="prepare"
@@ -49,5 +49,24 @@
 		   <arg path="${basedir}/build/phpunit.xml"/>
 	  </exec>
 	  <property name="phpunit.done" value="true"/>
+ </target>
+ <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+	  <exec executable="${toolsdir}pdepend">
+		   <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+		   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+		   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+		   <arg path="${basedir}/application" />
+	  </exec>
+ </target>
+ <target name="phploc-ci" description="Measure project size using PHPLOC and log result in CSV and XML format">
+	  <exec executable="${toolsdir}phploc" taskname="phploc">
+		   <arg value="--count-tests" />
+		   <arg value="--log-csv" />
+		   <arg path="${basedir}/build/logs/phploc.csv" />
+		   <arg value="--log-xml" />
+		   <arg path="${basedir}/build/logs/phploc.xml" />
+		   <arg path="${basedir}/application" />
+		   <arg path="${basedir}/tests" />
+	  </exec>
  </target>
 </project>
