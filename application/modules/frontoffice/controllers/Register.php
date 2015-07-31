@@ -26,7 +26,7 @@ class Register extends MX_Controller {
 		$this->data['active']       = TRUE;
 		$this->data['title']        = $this->lang->line("register");
         $this->data['assets']       = array(
-			'css'                   => array(),
+			'css'                   => array('register'),
 			'js'                    => array(),
 		);
 		$this->data['content']      = $this->load->view(

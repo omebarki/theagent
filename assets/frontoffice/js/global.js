@@ -38,14 +38,12 @@ function toggleLoveBrands() {
 	
 	if ( $(brandsList).hasClass('active') ) {
 		$(brandsList).removeClass('active');
-		$('#brandsListPlaceHolder').removeClass('active');
-		$('#brandsListPlaceHolderHome').removeClass('active');
-		//$('#fullPageContainer').addClass('noMove');
+		/*$('#brandsListPlaceHolder').removeClass('active');
+		$('#brandsListPlaceHolderHome').removeClass('active');*/
 	} else {
 		$(brandsList).addClass('active');
-		$('#brandsListPlaceHolder').addClass('active');
-		$('#brandsListPlaceHolderHome').addClass('active');
-		//$('#fullPageContainer').removeClass('noMove');
+		/*$('#brandsListPlaceHolder').addClass('active');
+		$('#brandsListPlaceHolderHome').addClass('active');*/
 	}
 }
 
@@ -120,9 +118,11 @@ $(document).ready(function() {
 	});
   
   var owl = $('.lovedBrands');
+  /*
   owl.on('initialized.owl.carousel refreshed.owl.carousel ', function() {
 	  setTimeout(detectCarouselSize, 250);
   });
+  */
   owl.owlCarousel({
 	items: 0,
 	margin: 15,
