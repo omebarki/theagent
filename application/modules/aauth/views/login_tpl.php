@@ -17,7 +17,7 @@
 <div class="container loginContainer">
 	<div class="row">
 		<div class="col-lg-6 col-md-8 col-sm-12">
-			<div class="col-md-8 col-sm-6 col-xs-12">
+			<div class="col-md-8 col-sm-6 col-xs-12 forceTablet">
 				<div class="row">
 					<h1 class="col-lg-8 col-sm-10 col-xs-8 forceStatic"><img src="<?= base_url() ?>/assets/frontoffice/img/the-agent-logo.png" width="256" height="56" alt="The Agent" class="img-responsive"></h1>
 					<?= form_open('/aauth/Aauth/login', ['class' => 'col-lg-8 col-sm-10 col-xs-8 homeLogin forceStatic', 'role' => 'form', 'id' => 'login']) ?>
@@ -38,8 +38,7 @@
 				<?= form_open('/aauth/Aauth/forgot', ['class' => '', 'role' => 'form', 'id' => 'forgotForm']) ?>
 				<?= form_close() ?>
 			</div>
-			<div class="clearfix"></div>
-			<div class="col-xs-12 homeMainBlock">
+			<div class="col-xs-12 homeMainBlock forceTablet">
 				<img src="<?= base_url() ?>/assets/frontoffice/img/homapage-bigtext.png" width="1000" height="323" alt="Join us" class="img-responsive">
 				<div class="row userTypeRegisterBlock">
 					<p class="col-xs-6 tac"><a class="btn btn-md btn-primary"><?= lang("sign_in_account_brand") ?></a></p>

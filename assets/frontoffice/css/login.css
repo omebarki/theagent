@@ -16,10 +16,17 @@ body.full {
 	padding-top:60px;
 	margin-bottom:90px;
 }
+.loginContainer h1 {
+	margin:0;
+}
 .loginContainer p {
 	font-size:16px;
 	margin-top:10px;
+	margin-bottom:0;
 	font-weight:bold;
+}
+.loginContainer .form-group {
+	margin-bottom:0;
 }
 .loginContainer p a.forgotPass {
 	color:#000;
@@ -95,6 +102,9 @@ form.homeLogin .btn {
 		font-size:12px;
 		white-space:normal;
 		max-width:120px;
+	}
+	.loginContainer {
+		margin-bottom:50px;
 	}
 }
 @media (max-width: 767px) {
