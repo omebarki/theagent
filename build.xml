@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare,phpmd,phpunit"
+         depends="prepare,phpunit,phpmd,pdepend"
          description=""/>
 
 <target name="prepare"
