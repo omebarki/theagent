@@ -50,4 +50,12 @@
 	  </exec>
 	  <property name="phpunit.done" value="true"/>
  </target>
+ <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+	  <exec executable="${toolsdir}/pdepend">
+		   <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+		   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+		   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+		   <arg path="${basedir}/application" />
+	  </exec>
+ </target>
 </project>
