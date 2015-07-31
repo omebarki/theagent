@@ -4,7 +4,7 @@
  <property name="toolsdir" value=""/>
 
 <target name="build"
-         depends="prepare,phpunit,phpmd,pdepend"
+         depends="prepare,phpunit,phpmd,pdepend,phploc-ci"
          description=""/>
 
 <target name="prepare"
@@ -56,6 +56,17 @@
 		   <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
 		   <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
 		   <arg path="${basedir}/application" />
+	  </exec>
+ </target>
+ <target name="phploc-ci" description="Measure project size using PHPLOC and log result in CSV and XML format">
+	  <exec executable="${basedir}/build/tools/phploc.phar" taskname="phploc">
+		   <arg value="--count-tests" />
+		   <arg value="--log-csv" />
+		   <arg path="${basedir}/build/logs/phploc.csv" />
+		   <arg value="--log-xml" />
+		   <arg path="${basedir}/build/logs/phploc.xml" />
+		   <arg path="${basedir}/application" />
+		   <arg path="${basedir}/tests" />
 	  </exec>
  </target>
 </project>
