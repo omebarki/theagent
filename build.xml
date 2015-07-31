@@ -59,7 +59,7 @@
 	  </exec>
  </target>
  <target name="phploc-ci" description="Measure project size using PHPLOC and log result in CSV and XML format">
-	  <exec executable="${basedir}/build/tools/phploc.phar" taskname="phploc">
+	  <exec executable="${toolsdir}phploc" taskname="phploc">
 		   <arg value="--count-tests" />
 		   <arg value="--log-csv" />
 		   <arg path="${basedir}/build/logs/phploc.csv" />
