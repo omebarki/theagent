@@ -23,7 +23,7 @@
 				<section>
 					<div class="sectionTitle">Personal Information</div>
 					<div class="row">
-						<div class="col-md-2">
+						<div class="form-group col-md-2">
 							<select class="selectpicker" id="title">
 								<option>Mr.</option>
 								<option>Mss.</option>
